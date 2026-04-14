@@ -124,6 +124,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(247,243,239,
 .res-card.coming{background:linear-gradient(135deg,var(--sage-l),var(--cream));border:2px dashed var(--sage)}
 .res-card.coming .res-top{background:transparent}
 .res-card.coming .res-btn{background:var(--sage-d)}
+.res-price{font-size:.82rem;font-weight:700;color:var(--charcoal);margin-bottom:10px;padding:3px 10px;background:var(--cream);border-radius:var(--pill);display:inline-block}
+.res-price.free{color:var(--sage-d);background:var(--sage-l)}
+.res-price.soon{color:var(--mid);background:var(--cream-d)}
 
 /* TESTIMONIALS */
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
@@ -203,7 +206,7 @@ footer a{color:var(--sage-l)}
 
 <nav>
   <span class="nav-brand">Her Money <span>&</span> AI</span>
-  <a href="#subscribe" class="nav-pill">Free Resources 💚</a>
+  <a href="https://payhip.com/Hermoneyandai" target="_blank" class="nav-pill">Shop Now 💚</a>
 </nav>
 
 <!-- Loading state shown until JSON loads -->
@@ -310,20 +313,50 @@ function buildHeroBtn(item) {
 /* ─── BUILD RESOURCE CARD ─── */
 function buildResCard(item) {
   const isComingSoon = item.badge === 'COMING SOON';
+  const isPWYW = item.price === 'Pay What You Want' || item.badge === 'FREE/PWYW';
+  const hasPayhip = item.link && item.link.startsWith('http');
+  const isPaid = !isComingSoon && !isPWYW && item.price && hasPayhip;
+
+  let priceTag = '';
+  if (isComingSoon) {
+    priceTag = '<div class="res-price soon">🔔 Coming Soon</div>';
+  } else if (isPWYW) {
+    priceTag = '<div class="res-price free">🎁 Free / Pay What You Want</div>';
+  } else if (item.price) {
+    let p = String(item.price).trim();
+    if (!p.startsWith('$')) p = '$' + p;
+    if (!p.includes('CAD')) p += ' CAD';
+    priceTag = '<div class="res-price">' + p + '</div>';
+  }
+
+  let btnLabel = 'Download Free →';
+  if (isComingSoon) btnLabel = 'Notify Me →';
+  else if (isPWYW && hasPayhip) btnLabel = 'Get It Free →';
+  else if (isPaid) btnLabel = 'Buy Now →';
+
   const div = document.createElement('div');
   div.className = 'res-card fi' + (isComingSoon ? ' coming' : '');
   div.innerHTML = `
     <div class="res-top">
       <span class="res-ico">${item.emoji}</span>
-      <span class="badge ${isComingSoon ? 'soon' : 'free'}">${item.badge}</span>
+      <span class="badge ${isComingSoon ? 'soon' : 'free'}">${item.badge || ''}</span>
     </div>
     <div class="res-body">
       <div class="res-title">${item.title}</div>
       <div class="res-desc">${item.desc}</div>
-      <button class="res-btn">${isComingSoon ? 'Notify Me →' : 'Download Free →'}</button>
+      ${priceTag}
+      <button class="res-btn">${btnLabel}</button>
     </div>`;
-  div.querySelector('.res-btn').onclick = () =>
-    openModal(item.file, item.title, item.desc, item.emoji);
+
+  div.querySelector('.res-btn').onclick = () => {
+    if (isComingSoon) {
+      window.open('https://instagram.com/Hermoneyandai', '_blank');
+    } else if (hasPayhip) {
+      window.open(item.link, '_blank');
+    } else {
+      openModal(item.file, item.title, item.desc, item.emoji);
+    }
+  };
   return div;
 }
 
