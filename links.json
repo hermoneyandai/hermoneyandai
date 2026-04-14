@@ -22,7 +22,7 @@
       "link": "HerMoneyAI_Monthly_Budget_Tracker.xlsx",
       "sub": "Excel download — enter email to get it",
       "style": "rose",
-      "show": true,
+      "show": false,
       "gated": true
     },
     {
@@ -31,7 +31,7 @@
       "link": "HerMoneyAI_TFSA_RRSP_FHSA_Tracker.xlsx",
       "sub": "Canadian account tracker — email required",
       "style": "teal",
-      "show": true,
+      "show": false,
       "gated": true
     },
     {
@@ -40,7 +40,7 @@
       "link": "HerMoneyAI_FIRE_Tracker.xlsx",
       "sub": "Free download — email required",
       "style": "white",
-      "show": true,
+      "show": false,
       "gated": true
     },
     {
@@ -49,7 +49,7 @@
       "link": "HerMoneyAI_Debt_Payoff_Planner.xlsx",
       "sub": "Free Excel tool — email required",
       "style": "white",
-      "show": true,
+      "show": false,
       "gated": true
     },
     {
@@ -58,14 +58,14 @@
       "link": "HerMoneyAI_Wealth_Builder.xlsx",
       "sub": "Get $25 when you sign up with my Link. My #1 for TFSA & RRSP. Zero commissions, beautiful app.",
       "style": "white",
-      "show": true,
+      "show": false,
       "gated": true
     },
     {
       "emoji": "📈",
       "label": "Open Wealthsimple — Get a Bonus! ✨",
       "link": "https://www.wealthsimple.com/invite/ANL87A",
-      "sub": "My #1 pick for TFSA & RRSP investing",
+      "sub": "Get $25 when you sign up with my Link. My #1 for TFSA & RRSP. Zero commissions, beautiful app.",
       "style": "dark",
       "show": true
     },
@@ -74,15 +74,15 @@
       "label": "Temu — My Storefront",
       "link": "https://temu.to/k/p3umr954hjw",
       "sub": "Budget-friendly baby & home finds",
-      "style": "white",
+      "style": "rose",
       "show": true
     },
     {
       "emoji": "🔗",
-      "label": "All My Affiliate Links & Tools",
-      "link": "#tools",
-      "sub": "Products I personally use & trust",
-      "style": "white",
+      "label": "All My Resources and Guides",
+      "link": "https://payhip.com/Hermoneyandai",
+      "sub": "Trackers and Guides I personally Use",
+      "style": "teal",
       "show": true
     },
     {
@@ -101,7 +101,7 @@
       "file": "HerMoneyAI_Monthly_Budget_Tracker.xlsx",
       "desc": "Track income, expenses & savings — designed for Canadian households, baby costs included.",
       "badge": "FREE",
-      "show": true
+      "show": false
     },
     {
       "emoji": "🍁",
@@ -109,7 +109,7 @@
       "file": "HerMoneyAI_TFSA_RRSP_FHSA_Tracker.xlsx",
       "desc": "Understand which Canadian account is right for you and track contributions in one place.",
       "badge": "FREE",
-      "show": true
+      "show": false
     },
     {
       "emoji": "💳",
@@ -117,7 +117,7 @@
       "file": "HerMoneyAI_Debt_Payoff_Planner.xlsx",
       "desc": "Avalanche or snowball — see the fastest path to becoming debt-free on a Canadian income.",
       "badge": "FREE",
-      "show": true
+      "show": false
     },
     {
       "emoji": "🔥",
@@ -125,7 +125,7 @@
       "file": "HerMoneyAI_FIRE_Tracker.xlsx",
       "desc": "Plan your path to financial independence — even while on maternity leave.",
       "badge": "FREE",
-      "show": true
+      "show": false
     },
     {
       "emoji": "📈",
@@ -133,7 +133,7 @@
       "file": "HerMoneyAI_Wealth_Builder.xlsx",
       "desc": "Track your net worth, investments & wealth growth month by month.",
       "badge": "FREE",
-      "show": true
+      "show": false
     },
     {
       "emoji": "✨",
@@ -141,7 +141,7 @@
       "file": "#",
       "desc": "The complete playbook — EI calculations, budget adjustments & rebuilding income.",
       "badge": "COMING SOON",
-      "show": true
+      "show": false
     }
   ],
   "tools": [
@@ -243,7 +243,7 @@
       "desc": "How I create all my content graphics & YouTube thumbnails. Easiest design tool out there.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": true
+      "show": false
     },
     {
       "category": "🤖 AI & Productivity",
@@ -253,7 +253,7 @@
       "desc": "How I organize finances, content ideas & baby expenses all in one place. Free to start.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": true
+      "show": false
     }
   ],
   "testimonials": [
@@ -266,13 +266,13 @@
     {
       "quote": "The budget tracker helped me see exactly where my money was going during mat leave. Game changer for our family!",
       "name": "Anika R.",
-      "loc": "New Mom · Calgary, AB",
+      "loc": "New Mom · Cambridge, ON",
       "show": true
     },
     {
       "quote": "So refreshing to see Canadian finance content that actually makes sense for immigrant moms like us. Subscribed immediately!",
       "name": "Priya M.",
-      "loc": "Finance Newbie · Vancouver, BC",
+      "loc": "Finance Newbie · Brampton, ON",
       "show": true
     }
   ]
