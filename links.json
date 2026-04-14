@@ -17,51 +17,6 @@
       "show": true
     },
     {
-      "emoji": "📊",
-      "label": "Free Monthly Budget Tracker",
-      "link": "HerMoneyAI_Monthly_Budget_Tracker.xlsx",
-      "sub": "Excel download — enter email to get it",
-      "style": "rose",
-      "show": false,
-      "gated": true
-    },
-    {
-      "emoji": "🍁",
-      "label": "TFSA vs RRSP vs FHSA Guide",
-      "link": "HerMoneyAI_TFSA_RRSP_FHSA_Tracker.xlsx",
-      "sub": "Canadian account tracker — email required",
-      "style": "teal",
-      "show": false,
-      "gated": true
-    },
-    {
-      "emoji": "🔥",
-      "label": "FIRE Retirement Tracker",
-      "link": "HerMoneyAI_FIRE_Tracker.xlsx",
-      "sub": "Free download — email required",
-      "style": "white",
-      "show": false,
-      "gated": true
-    },
-    {
-      "emoji": "💳",
-      "label": "Debt Payoff Planner",
-      "link": "HerMoneyAI_Debt_Payoff_Planner.xlsx",
-      "sub": "Free Excel tool — email required",
-      "style": "white",
-      "show": false,
-      "gated": true
-    },
-    {
-      "emoji": "📈",
-      "label": "Wealth Builder Spreadsheet",
-      "link": "HerMoneyAI_Wealth_Builder.xlsx",
-      "sub": "Get $25 when you sign up with my Link. My #1 for TFSA & RRSP. Zero commissions, beautiful app.",
-      "style": "white",
-      "show": false,
-      "gated": true
-    },
-    {
       "emoji": "📈",
       "label": "Open Wealthsimple — Get a Bonus! ✨",
       "link": "https://www.wealthsimple.com/invite/ANL87A",
