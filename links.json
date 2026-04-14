@@ -17,10 +17,42 @@
       "show": true
     },
     {
+      "emoji": "📊",
+      "label": "Free Monthly Budget Tracker",
+      "link": "https://payhip.com/b/YrASs",
+      "sub": "Pay What You Want — no catch!",
+      "style": "rose",
+      "show": true
+    },
+    {
+      "emoji": "🎓",
+      "label": "RESP Savings Tracker",
+      "link": "https://payhip.com/b/Bn9X8",
+      "sub": "Track education savings & government grants — $19.99 CAD",
+      "style": "teal",
+      "show": true
+    },
+    {
+      "emoji": "💳",
+      "label": "Debt Reset Tracker",
+      "link": "https://payhip.com/b/eLGPY",
+      "sub": "Avalanche or snowball — pick your path — $14.99 CAD",
+      "style": "white",
+      "show": true
+    },
+    {
+      "emoji": "📅",
+      "label": "Money Clarity Call — 1-on-1 Coaching",
+      "link": "#",
+      "sub": "Coming Soon — 60 min personal finance coaching",
+      "style": "white",
+      "show": true
+    },
+    {
       "emoji": "📈",
       "label": "Open Wealthsimple — Get a Bonus! ✨",
       "link": "https://www.wealthsimple.com/invite/ANL87A",
-      "sub": "Get $25 when you sign up with my Link. My #1 for TFSA & RRSP. Zero commissions, beautiful app.",
+      "sub": "My #1 pick for TFSA & RRSP investing",
       "style": "dark",
       "show": true
     },
@@ -29,15 +61,15 @@
       "label": "Temu — My Storefront",
       "link": "https://temu.to/k/p3umr954hjw",
       "sub": "Budget-friendly baby & home finds",
-      "style": "rose",
+      "style": "white",
       "show": true
     },
     {
       "emoji": "🔗",
-      "label": "All My Resources and Guides",
-      "link": "https://payhip.com/Hermoneyandai",
-      "sub": "Trackers and Guides I personally Use",
-      "style": "teal",
+      "label": "All My Affiliate Links & Tools",
+      "link": "#tools",
+      "sub": "Products I personally use & trust",
+      "style": "white",
       "show": true
     },
     {
@@ -54,49 +86,61 @@
       "emoji": "📊",
       "title": "Monthly Budget Tracker",
       "file": "HerMoneyAI_Monthly_Budget_Tracker.xlsx",
+      "link": "https://payhip.com/b/YrASs",
+      "price": "Pay What You Want",
       "desc": "Track income, expenses & savings — designed for Canadian households, baby costs included.",
-      "badge": "FREE",
-      "show": false
+      "badge": "FREE/PWYW",
+      "show": true
+    },
+    {
+      "emoji": "🎓",
+      "title": "RESP Savings Tracker",
+      "file": "",
+      "link": "https://payhip.com/b/Bn9X8",
+      "price": "$19.99",
+      "desc": "Track your child's education savings, government grants & contribution room in one simple sheet.",
+      "badge": "NEW",
+      "show": true
+    },
+    {
+      "emoji": "💳",
+      "title": "Debt Reset Tracker",
+      "file": "",
+      "link": "https://payhip.com/b/eLGPY",
+      "price": "$14.99",
+      "desc": "Avalanche or snowball — see the fastest path to becoming debt-free on a Canadian income.",
+      "badge": "NEW",
+      "show": true
+    },
+    {
+      "emoji": "📅",
+      "title": "Money Clarity Call — 1-on-1 Coaching",
+      "file": "",
+      "link": "",
+      "price": "",
+      "desc": "60-minute personal finance session — mat leave planning, budgeting, money mindset & more.",
+      "badge": "COMING SOON",
+      "show": true
     },
     {
       "emoji": "🍁",
       "title": "TFSA / RRSP / FHSA Tracker",
       "file": "HerMoneyAI_TFSA_RRSP_FHSA_Tracker.xlsx",
+      "link": "",
+      "price": "",
       "desc": "Understand which Canadian account is right for you and track contributions in one place.",
-      "badge": "FREE",
-      "show": false
-    },
-    {
-      "emoji": "💳",
-      "title": "Debt Payoff Planner",
-      "file": "HerMoneyAI_Debt_Payoff_Planner.xlsx",
-      "desc": "Avalanche or snowball — see the fastest path to becoming debt-free on a Canadian income.",
-      "badge": "FREE",
-      "show": false
-    },
-    {
-      "emoji": "🔥",
-      "title": "FIRE Retirement Tracker",
-      "file": "HerMoneyAI_FIRE_Tracker.xlsx",
-      "desc": "Plan your path to financial independence — even while on maternity leave.",
-      "badge": "FREE",
-      "show": false
-    },
-    {
-      "emoji": "📈",
-      "title": "Wealth Builder Spreadsheet",
-      "file": "HerMoneyAI_Wealth_Builder.xlsx",
-      "desc": "Track your net worth, investments & wealth growth month by month.",
-      "badge": "FREE",
+      "badge": "COMING SOON",
       "show": false
     },
     {
       "emoji": "✨",
       "title": "Maternity Leave Money Guide",
       "file": "#",
+      "link": "",
+      "price": "",
       "desc": "The complete playbook — EI calculations, budget adjustments & rebuilding income.",
       "badge": "COMING SOON",
-      "show": false
+      "show": true
     }
   ],
   "tools": [
@@ -129,16 +173,6 @@
       "btn": "✨ Get a Bonus →",
       "highlight": false,
       "show": true
-    },
-    {
-      "category": "🏦 Investing & Banking",
-      "emoji": "🏦",
-      "name": "EQ Bank",
-      "link": "https://join.eqbank.ca/?code=KIRTI5769",
-      "desc": "Get $20 when you deposit your first $100. One of the best high-interest savings rates in Canada. Great for your emergency fund.",
-      "btn": "Try it here →",
-      "highlight": false,
-      "show": false
     },
     {
       "category": "🛍️ Shopping & Baby",
@@ -185,7 +219,7 @@
       "emoji": "🛒",
       "name": "Rakuten Cashback",
       "link": "https://www.rakuten.ca/referrer?referrerid=ffpJTnnAGCg%3D&src=Link",
-      "desc": "Get $30 when you sign up. My best hack for cahsback on almost all major sites",
+      "desc": "Get $30 when you sign up. My best hack for cashback on almost all major sites",
       "btn": "Try it here →",
       "highlight": false,
       "show": true
@@ -198,7 +232,7 @@
       "desc": "How I create all my content graphics & YouTube thumbnails. Easiest design tool out there.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": false
+      "show": true
     },
     {
       "category": "🤖 AI & Productivity",
@@ -208,7 +242,7 @@
       "desc": "How I organize finances, content ideas & baby expenses all in one place. Free to start.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": false
+      "show": true
     }
   ],
   "testimonials": [
@@ -221,13 +255,13 @@
     {
       "quote": "The budget tracker helped me see exactly where my money was going during mat leave. Game changer for our family!",
       "name": "Anika R.",
-      "loc": "New Mom · Cambridge, ON",
+      "loc": "New Mom · Calgary, AB",
       "show": true
     },
     {
       "quote": "So refreshing to see Canadian finance content that actually makes sense for immigrant moms like us. Subscribed immediately!",
       "name": "Priya M.",
-      "loc": "Finance Newbie · Brampton, ON",
+      "loc": "Finance Newbie · Vancouver, BC",
       "show": true
     }
   ]
