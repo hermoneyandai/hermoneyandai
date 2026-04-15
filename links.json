@@ -1,19 +1,19 @@
 {
   "heroLinks": [
     {
-      "emoji": "▶️",
-      "label": "Watch on YouTube",
-      "link": "https://youtube.com/@hermoneyand_AI",
-      "sub": "Money tips, maternity leave & more",
-      "style": "sage",
-      "show": true
-    },
-    {
-      "emoji": "📸",
+     "emoji": "📸",
       "label": "Follow on Instagram",
       "link": "https://instagram.com/Hermoneyandai",
       "sub": "Daily finance & Canadian mom life",
       "style": "white",
+      "show": true
+    },
+    {
+     "emoji": "💻",
+      "label": "All my Resources",
+      "link": "https://payhip.com/b/YrASs",
+      "sub": "Everything at One Place",
+      "style": "Sage",
       "show": true
     },
     {
@@ -25,18 +25,18 @@
       "show": true
     },
     {
-      "emoji": "🎓",
-      "label": "RESP Savings Tracker",
-      "link": "https://payhip.com/b/Bn9X8",
-      "sub": "Track education savings & government grants — $19.99 CAD",
+      "emoji": "🤰",
+      "label": "Maternity Money Plan",
+      "link": "https://payhip.com/b/Pr9eW",
+      "sub": "TKnow exactly how much you’ll make on maternity leave—before and after taxes - 14.99 CAD",
       "style": "teal",
       "show": true
     },
     {
       "emoji": "💳",
-      "label": "Debt Reset Tracker",
-      "link": "https://payhip.com/b/eLGPY",
-      "sub": "Avalanche or snowball — pick your path — $14.99 CAD",
+      "label": "Tax Smart Wealth System™ 🇨🇦",
+      "link": "https://payhip.com/b/fXwCZ",
+      "sub": "TFSA vs RRSP vs FHSA, everything you need to plan your taxes and investments — $14.99 CAD",
       "style": "white",
       "show": true
     },
@@ -81,69 +81,7 @@
       "show": true
     }
   ],
-  "resources": [
-    {
-      "emoji": "📊",
-      "title": "Monthly Budget Tracker",
-      "file": "HerMoneyAI_Monthly_Budget_Tracker.xlsx",
-      "link": "https://payhip.com/b/YrASs",
-      "price": "Pay What You Want",
-      "desc": "Track income, expenses & savings — designed for Canadian households, baby costs included.",
-      "badge": "FREE/PWYW",
-      "show": true
-    },
-    {
-      "emoji": "🎓",
-      "title": "RESP Savings Tracker",
-      "file": "",
-      "link": "https://payhip.com/b/Bn9X8",
-      "price": "$19.99",
-      "desc": "Track your child's education savings, government grants & contribution room in one simple sheet.",
-      "badge": "NEW",
-      "show": true
-    },
-    {
-      "emoji": "💳",
-      "title": "Debt Reset Tracker",
-      "file": "",
-      "link": "https://payhip.com/b/eLGPY",
-      "price": "$14.99",
-      "desc": "Avalanche or snowball — see the fastest path to becoming debt-free on a Canadian income.",
-      "badge": "NEW",
-      "show": true
-    },
-    {
-      "emoji": "📅",
-      "title": "Money Clarity Call — 1-on-1 Coaching",
-      "file": "",
-      "link": "",
-      "price": "",
-      "desc": "60-minute personal finance session — mat leave planning, budgeting, money mindset & more.",
-      "badge": "COMING SOON",
-      "show": true
-    },
-    {
-      "emoji": "🍁",
-      "title": "TFSA / RRSP / FHSA Tracker",
-      "file": "HerMoneyAI_TFSA_RRSP_FHSA_Tracker.xlsx",
-      "link": "",
-      "price": "",
-      "desc": "Understand which Canadian account is right for you and track contributions in one place.",
-      "badge": "COMING SOON",
-      "show": false
-    },
-    {
-      "emoji": "✨",
-      "title": "Maternity Leave Money Guide",
-      "file": "#",
-      "link": "",
-      "price": "",
-      "desc": "The complete playbook — EI calculations, budget adjustments & rebuilding income.",
-      "badge": "COMING SOON",
-      "show": true
-    }
-  ],
-  "tools": [
+   "tools": [
     {
       "category": "🏦 Investing & Banking",
       "emoji": "📈",
@@ -232,7 +170,7 @@
       "desc": "How I create all my content graphics & YouTube thumbnails. Easiest design tool out there.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": true
+      "show": false
     },
     {
       "category": "🤖 AI & Productivity",
@@ -242,7 +180,7 @@
       "desc": "How I organize finances, content ideas & baby expenses all in one place. Free to start.",
       "btn": "Try it here →",
       "highlight": false,
-      "show": true
+      "show": false
     }
   ],
   "testimonials": [
