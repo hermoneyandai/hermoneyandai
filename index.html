@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Her Money & AI · Kirti Thakran</title>
+<meta name="description" content="Mat leave, EI, product recommendations & everything in between. Canadian mom finance by Kirti Thakran.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--tc:#C17C74;--tc-l:#FDF0EB;--tc-m:#E8B5AB;--pl:#7D6E8A;--pl-l:#F3EEF7;--am:#B5763A;--am-l:#FBF4EC;--sg:#6B8F71;--sg-l:#EEF4EE;--dark:#1E1410;--mid:#666;--light:#AAA;--border:#F0E4DE;--white:#fff}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Lato',sans-serif;background:#fff;color:var(--dark);min-height:100vh}
+.hdr{background:#fff;border-bottom:0.5px solid var(--border);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--dark);text-decoration:none}
+.logo em{color:var(--tc);font-style:italic;font-weight:400}
+.ig-btn{background:var(--tc);color:#fff;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;padding:7px 14px;border-radius:99px;letter-spacing:0.06em;text-decoration:none}
+.hero{padding:32px 20px 24px;text-align:center;background:#fff;position:relative;overflow:hidden}
+.hero-oval{position:absolute;border-radius:50%;pointer-events:none}
+.o1{width:150px;height:100px;background:var(--tc-l);top:-30px;right:-40px}
+.o2{width:90px;height:120px;background:var(--pl-l);bottom:-20px;left:-20px;opacity:0.6}
+.o3{width:70px;height:70px;background:var(--sg-l);bottom:10px;right:10px;opacity:0.4}
+.avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 14px;border:3px solid #fff;box-shadow:0 4px 20px rgba(193,124,116,0.2);overflow:hidden;position:relative;z-index:1;background:var(--tc-m)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--dark);position:relative;z-index:1}
+.hero-name em{color:var(--tc);font-style:italic;font-weight:400}
+.handle{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:0.16em;color:var(--tc);text-transform:uppercase;font-weight:600;margin:5px 0 9px;position:relative;z-index:1}
+.bio{font-size:12px;color:var(--mid);line-height:1.65;max-width:280px;margin:0 auto 14px;position:relative;z-index:1}
+.tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.tag{background:#fff;border:0.5px solid var(--border);border-radius:8px;padding:5px 11px;font-family:'Poppins',sans-serif;font-size:9px;color:var(--mid);font-weight:500}
+.picks-banner{background:var(--tc-l);border-radius:14px;overflow:hidden;text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;position:relative;border:0.5px solid var(--tc-m)}
+.pb-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(193,124,116,0.15) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(181,118,58,0.1) 0%,transparent 40%),radial-gradient(circle at 60% 80%,rgba(107,143,113,0.08) 0%,transparent 40%);pointer-events:none}
+.pb-left{position:relative;z-index:1;flex:1}
+.pb-tag{font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--tc);font-weight:600;margin-bottom:4px}
+.pb-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--dark);line-height:1.2}
+.pb-title em{font-style:italic;font-weight:400;color:var(--tc)}
+.pb-sub{font-size:10px;color:var(--mid);margin-top:3px}
+.pb-arrow{width:32px;height:32px;border-radius:50%;background:var(--tc);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;font-size:14px;color:#fff;margin-left:12px}
+.sec-head{padding:20px 20px 10px;display:flex;align-items:center;gap:10px}
+.sec-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sec-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--dark)}
+.sec-title em{font-style:italic;font-weight:400}
+.sec-line{flex:1;height:0.5px;background:var(--border)}
+.swipe-wrap{position:relative}
+.swipe-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:0 20px 4px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.swipe-row::-webkit-scrollbar{display:none}
+.swipe-fade{position:absolute;top:0;right:0;bottom:4px;width:48px;background:linear-gradient(to right,transparent,#fff 90%);pointer-events:none;z-index:2}
+.guide-tile{flex-shrink:0;width:148px;border-radius:14px;overflow:hidden;border:0.5px solid var(--border);text-decoration:none;display:flex;flex-direction:column;scroll-snap-align:start;background:#fff;transition:transform 0.15s}
+.guide-tile:active{transform:scale(0.97)}
+.g-img{height:96px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.g-img img{width:100%;height:100%;object-fit:cover}
+.g-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:10px;font-weight:700;color:#fff;padding:8px;text-align:center;line-height:1.3}
+.g-body{padding:10px;flex:1;display:flex;flex-direction:column}
+.g-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:var(--dark);margin-bottom:3px;line-height:1.3;flex:1}
+.g-price{font-family:'Lato',sans-serif;font-size:10px;color:var(--mid);margin-bottom:8px}
+.g-cta{width:100%;padding:7px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;text-align:center;display:block;text-decoration:none}
+.tool-tile{flex-shrink:0;width:148px;border-radius:14px;overflow:hidden;border:0.5px solid var(--border);display:flex;flex-direction:column;scroll-snap-align:start;background:#fff}
+.t-top{height:72px;display:flex;align-items:center;justify-content:center;font-size:28px}
+.t-body{padding:10px;flex:1;display:flex;flex-direction:column}
+.t-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:var(--dark);margin-bottom:2px;line-height:1.3}
+.t-desc{font-size:9.5px;color:var(--mid);line-height:1.4;flex:1;margin-bottom:8px}
+.t-btn{width:100%;padding:7px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:#fff;border:none;cursor:pointer;letter-spacing:0.06em;text-align:center;display:block;text-decoration:none}
+.links-list{padding:0 16px 6px;display:flex;flex-direction:column;gap:8px}
+.link-card{background:#fff;border:0.5px solid var(--border);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.15s}
+.link-card:active{transform:scale(0.98)}
+.l-img{width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden}
+.l-img img{width:100%;height:100%;object-fit:contain;border-radius:10px}
+.l-body{flex:1;min-width:0}
+.l-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;color:var(--dark);margin-bottom:2px}
+.l-desc{font-size:10px;color:var(--mid);line-height:1.4}
+.l-cta{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;color:#fff;padding:6px 12px;border-radius:99px;flex-shrink:0;white-space:nowrap}
+.social-row{display:flex;justify-content:center;padding:18px 20px 20px}
+.ig-full{background:var(--tc);color:#fff;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;padding:13px 36px;border-radius:99px;letter-spacing:0.06em;text-decoration:none;display:inline-block}
+.footer{background:#FDFAF7;border-top:0.5px solid var(--border);padding:16px 20px;text-align:center;font-family:'Lato',sans-serif;font-size:10px;color:var(--light);line-height:1.7}
+.footer strong{color:var(--dark)}
+.loading{text-align:center;padding:24px;font-family:'Poppins',sans-serif;font-size:11px;color:var(--light)}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <a href="index.html" class="logo">Her Money <em>& AI</em></a>
+  <a href="https://instagram.com/hermoneyandai" target="_blank" class="ig-btn">Follow on Instagram</a>
+</header>
+
+<section class="hero">
+  <div class="hero-oval o1"></div>
+  <div class="hero-oval o2"></div>
+  <div class="hero-oval o3"></div>
+  <div class="avatar">
+    <img src="Profile.png" alt="Kirti Thakran" onerror="this.style.display='none';this.parentElement.innerHTML='🍁'">
+  </div>
+  <div class="hero-name">Kirti <em>Thakran</em></div>
+  <div class="handle">@hermoneyandai</div>
+  <div class="bio">Mat leave, EI, product recommendations & everything in between 🍁</div>
+  <div class="tags">
+    <div class="tag">Loves Personal Finance</div>
+    <div class="tag">Navigating Motherhood</div>
+    <div class="tag">New Mama</div>
+  </div>
+</section>
+
+<div style="padding:16px 16px 0">
+  <a href="picks.html" class="picks-banner">
+    <div class="pb-pattern"></div>
+    <div class="pb-left">
+      <div class="pb-tag">✦ My Product Picks</div>
+      <div class="pb-title">You asked, here's <em>everything</em> I actually use</div>
+      <div class="pb-sub">Honest reviews · No fluff</div>
+    </div>
+    <div class="pb-arrow">→</div>
+  </a>
+</div>
+
+<div class="sec-head"><div class="sec-dot" style="background:var(--tc)"></div><div class="sec-title">My <em>Guides</em></div><div class="sec-line"></div></div>
+<div class="swipe-wrap"><div class="swipe-row" id="guides-row"><div class="loading">Loading...</div></div><div class="swipe-fade"></div></div>
+
+<div class="sec-head" style="padding-top:18px"><div class="sec-dot" style="background:var(--pl)"></div><div class="sec-title">Free <em>Tools</em></div><div class="sec-line"></div></div>
+<div class="swipe-wrap"><div class="swipe-row" id="tools-row"><div class="loading">Loading...</div></div><div class="swipe-fade"></div></div>
+
+<div id="links-sections"></div>
+
+<div class="social-row">
+  <a href="https://instagram.com/hermoneyandai" target="_blank" class="ig-full">📸 Follow @hermoneyandai</a>
+</div>
+
+<footer class="footer">
+  <strong>Her Money & AI</strong> · Kirti Thakran · hermoneyandai.ca 🍁<br>
+  Content is for educational purposes only and does not constitute financial advice.
+</footer>
+
+<script>
+const COLORS=['#C17C74','#7D6E8A','#B5763A','#6B8F71'];
+const LIGHTS=['#FDF0EB','#F3EEF7','#FBF4EC','#EEF4EE'];
+const SEC_LABELS={referral:'Referral Bonuses',social:'Find Me Online',shopping:'My Favourite Finds',paid:'My Digital Products'};
+const SEC_DOTS={referral:'var(--tc)',social:'var(--sg)',shopping:'var(--am)',paid:'var(--pl)'};
+
+function parseCSV(text){
+  const lines=text.trim().split('\n').filter(l=>l.trim());
+  if(lines.length<2)return[];
+  const headers=lines[0].split(',').map(h=>h.trim().toLowerCase());
+  return lines.slice(1).map(line=>{
+    const cols=[];let cur='',inQ=false;
+    for(let i=0;i<line.length;i++){
+      const ch=line[i];
+      if(ch==='"'){inQ=!inQ;}else if(ch===','&&!inQ){cols.push(cur.trim());cur='';}else{cur+=ch;}
+    }
+    cols.push(cur.trim());
+    const obj={};
+    headers.forEach((h,i)=>{obj[h]=(cols[i]||'').replace(/^"|"$/g,'').trim();});
+    return obj;
+  });
+}
+
+function buildGuides(items){
+  const row=document.getElementById('guides-row');
+  row.innerHTML='';
+  items.forEach((g,i)=>{
+    const col=g.color||COLORS[i%4];
+    const a=document.createElement('a');
+    a.className='guide-tile';
+    a.href=g.url||'#';
+    a.target='_blank';
+    a.rel='noopener noreferrer';
+    const imgHTML=g.image_url
+      ?`<img src="${g.image_url}" alt="${g.title}" onerror="this.parentElement.innerHTML='<div class=g-fallback style=background:${col}>${g.title}</div>'">`
+      :`<div class="g-fallback" style="background:${col}">${g.title}</div>`;
+    a.innerHTML=`<div class="g-img" style="background:${col}">${imgHTML}</div>
+      <div class="g-body"><div class="g-name">${g.title}</div><div class="g-price">${g.price||'Free'}</div></div>
+      <div class="g-cta" style="background:${col}">${g.button_text||((g.price&&g.price!=='Free')?'Get Guide →':'Download →')}</div>`;
+    row.appendChild(a);
+  });
+}
+
+function buildTools(items){
+  const row=document.getElementById('tools-row');
+  row.innerHTML='';
+  items.forEach(t=>{
+    const col=t.color||'#7D6E8A';
+    const isLive=t.live==='yes';
+    const el=document.createElement(isLive?'a':'div');
+    el.className='tool-tile';
+    if(isLive){el.href=t.url;el.style.textDecoration='none';}
+    if(!isLive)el.style.opacity='0.55';
+    el.innerHTML=`<div class="t-top" style="background:${col}20">${t.emoji||'🔧'}</div>
+      <div class="t-body"><div class="t-name">${t.title}</div><div class="t-desc">${t.description||''}</div></div>
+      <div class="t-btn" style="background:${col}">${isLive?(t.button_text||'Try Free →'):'Coming Soon'}</div>`;
+    row.appendChild(el);
+  });
+}
+
+function buildLinks(items){
+  const container=document.getElementById('links-sections');
+  container.innerHTML='';
+  const sections={};
+  items.forEach(item=>{
+    const s=(item.section||'other').toLowerCase();
+    if(!sections[s])sections[s]=[];
+    sections[s].push(item);
+  });
+  const order=['referral','paid','shopping','social'];
+  const allSecs=[...order,...Object.keys(sections).filter(s=>!order.includes(s))];
+  allSecs.forEach((sec,si)=>{
+    if(!sections[sec]||!sections[sec].length)return;
+    const label=SEC_LABELS[sec]||sec;
+    const dot=SEC_DOTS[sec]||COLORS[si%4];
+    const col=COLORS[si%4];
+    const head=document.createElement('div');
+    head.innerHTML=`<div class="sec-head" style="padding-top:18px">
+      <div class="sec-dot" style="background:${dot}"></div>
+      <div class="sec-title">${label}</div>
+      <div class="sec-line"></div>
+    </div>`;
+    container.appendChild(head);
+    const list=document.createElement('div');
+    list.className='links-list';
+    sections[sec].forEach((item,i)=>{
+      const c=item.color||COLORS[i%4];
+      const isExt=item.url?.startsWith('http');
+      const a=document.createElement('a');
+      a.className='link-card';
+      a.href=item.url||'#';
+      if(isExt){a.target='_blank';a.rel='noopener noreferrer';}
+      const imgHTML=item.image_url
+        ?`<img src="${item.image_url}" alt="${item.title}">`
+        :(item.emoji||'🔗');
+      a.innerHTML=`<div class="l-img" style="background:${c}20">${imgHTML}</div>
+        <div class="l-body"><div class="l-name">${item.title}</div>${item.description?`<div class="l-desc">${item.description}</div>`:''}</div>
+        <div class="l-cta" style="background:${c}">${item.button_text||'Visit →'}</div>`;
+      list.appendChild(a);
+    });
+    container.appendChild(list);
+  });
+}
+
+fetch('https://opensheet.elk.sh/1FnnAMlJrma3nKgymYg77t0rI_s5Y0zbFOMZUd0PB9wU/data')
+  .then(r=>{if(!r.ok)throw new Error();return r.json();})
+  .then(all=>{
+    all = all.filter(r=>r.TITLE||r.title).map(r=>{const o={};Object.keys(r).forEach(k=>{o[k.toLowerCase()]=r[k];});return o;});
+    buildGuides(all.filter(r=>r.page==='guides'));
+    buildTools(all.filter(r=>r.page==='tools'));
+    buildLinks(all.filter(r=>r.page==='links'));
+  })
+  .catch(()=>{
+    document.getElementById('guides-row').innerHTML='<div style="padding:20px;font-size:11px;color:#aaa">Loading guides...</div>';
+    document.getElementById('tools-row').innerHTML='<div style="padding:20px;font-size:11px;color:#aaa">Loading tools...</div>';
+  });
+</script>
+</body>
+</html>
