@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EI Maternity Leave Calculator — Her Money & AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --tc: #C17C74;
+    --tc-light: #FDF0EB;
+    --tc-med: #E8B5AB;
+    --tc-dark: #A5625A;
+    --dark: #1E1410;
+    --mid: #666666;
+    --light: #AAAAAA;
+    --border: #F0E4DE;
+    --white: #ffffff;
+    --bg: #FDFAF7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .logo span { color: var(--tc); font-style: italic; }
+  .header-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tc);
+    font-weight: 600;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 52px 24px 36px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tc);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--tc-med);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--tc);
+    font-weight: 400;
+  }
+  .hero p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-top: 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── DECO SHAPES ── */
+  .deco {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--tc-light);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .deco-1 { width: 120px; height: 80px; top: 20px; right: -20px; opacity: 0.6; }
+  .deco-2 { width: 60px; height: 80px; bottom: 0; left: -10px; opacity: 0.4; }
+
+  /* ── MAIN CARD ── */
+  .main-card {
+    max-width: 680px;
+    margin: 0 auto 48px;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── EMAIL GATE ── */
+  .gate {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    text-align: center;
+    box-shadow: 0 4px 32px rgba(193,124,116,0.08);
+  }
+  .gate-icon { font-size: 36px; margin-bottom: 16px; }
+  .gate h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+  .gate h2 em { font-style: italic; color: var(--tc); }
+  .gate p {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gate-form { display: flex; flex-direction: column; gap: 12px; max-width: 380px; margin: 0 auto; }
+  .gate-form input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 99px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .gate-form input:focus { border-color: var(--tc); }
+  .gate-form input::placeholder { color: var(--light); }
+  .btn-primary {
+    width: 100%;
+    padding: 15px 24px;
+    background: var(--tc);
+    color: var(--white);
+    border: none;
+    border-radius: 99px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--tc-dark); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .gate-note {
+    font-size: 11px;
+    color: var(--light);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ── CALCULATOR ── */
+  .calculator { display: none; }
+  .calculator.visible { display: block; }
+
+  .calc-section {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: 28px 28px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 20px rgba(193,124,116,0.06);
+  }
+  .calc-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tc);
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .calc-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .input-group { margin-bottom: 18px; }
+  .input-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .input-sub {
+    font-size: 11px;
+    color: var(--light);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-prefix {
+    position: absolute;
+    left: 16px;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    color: var(--tc);
+    font-weight: 700;
+    pointer-events: none;
+  }
+  .calc-input {
+    width: 100%;
+    padding: 13px 16px 13px 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    background: var(--bg);
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  .calc-input::-webkit-outer-spin-button,
+  .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .calc-input:focus { border-color: var(--tc); background: var(--white); }
+
+  .toggle-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .toggle-btn {
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mid);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .toggle-btn.active {
+    border-color: var(--tc);
+    background: var(--tc-light);
+    color: var(--tc);
+  }
+  .toggle-btn span {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--light);
+    margin-top: 3px;
+  }
+  .toggle-btn.active span { color: var(--tc-med); }
+
+  /* ── RESULTS ── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .result-card {
+    background: var(--tc-light);
+    border-radius: 18px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .result-card:hover { transform: translateY(-2px); }
+  .result-card.highlight {
+    background: var(--tc);
+    grid-column: 1 / -1;
+  }
+  .result-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tc);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .result-card.highlight .result-label { color: rgba(255,255,255,0.8); }
+  .result-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .result-card.highlight .result-amount { color: var(--white); font-size: 32px; }
+  .result-note {
+    font-size: 10px;
+    color: var(--mid);
+    margin-top: 4px;
+  }
+  .result-card.highlight .result-note { color: rgba(255,255,255,0.7); }
+
+  /* ── BREAKDOWN ── */
+  .breakdown {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-top: 10px;
+  }
+  .breakdown-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tc);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .label { color: var(--mid); }
+  .breakdown-row .value { font-weight: 700; color: var(--dark); font-family: 'Lato', sans-serif; }
+  .breakdown-row.total .label { color: var(--dark); font-weight: 700; }
+  .breakdown-row.total .value { color: var(--tc); font-size: 14px; }
+
+  /* ── WARNING BOX ── */
+  .warn-box {
+    border-left: 3px solid var(--tc);
+    background: var(--tc-light);
+    border-radius: 0 14px 14px 0;
+    padding: 14px 16px;
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .warn-box .warn-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .warn-box p {
+    font-size: 11.5px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .warn-box strong { color: var(--dark); }
+
+  /* ── CTA ── */
+  .cta-box {
+    background: var(--tc);
+    border-radius: 20px;
+    padding: 24px 24px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .cta-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .cta-box h3 em { font-style: italic; font-weight: 400; }
+  .cta-box p { font-size: 12px; color: rgba(255,255,255,0.8); margin-bottom: 16px; }
+  .btn-white {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--white);
+    color: var(--tc);
+    border-radius: 99px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+  }
+  .site-footer p {
+    font-size: 11px;
+    color: var(--light);
+    line-height: 1.7;
+  }
+  .site-footer a { color: var(--tc); text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.4s ease forwards; }
+
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .count-anim { animation: countUp 0.3s ease forwards; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 480px) {
+    .gate { padding: 28px 20px; }
+    .calc-section { padding: 22px 18px; }
+    .results-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .result-amount { font-size: 20px; }
+    .result-card.highlight .result-amount { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#" class="logo">Her Money <span>& AI</span></a>
+  <span class="header-tag">✦ Canadian Mom Tools</span>
+</header>
+
+<section class="hero">
+  <div class="deco deco-1"></div>
+  <div class="deco deco-2"></div>
+  <div class="hero-eyebrow">Free Calculator</div>
+  <h1>How Much Will You <em>Actually Get</em> on Mat Leave?</h1>
+  <p>Enter your salary and get your real EI numbers — weekly payout, maternity total, parental total, and what to set aside for taxes.</p>
+</section>
+
+<div class="main-card">
+
+  <!-- EMAIL GATE -->
+  <div class="gate" id="gate">
+    <div class="gate-icon">🍁</div>
+    <h2>Get Your <em>Free</em> Results</h2>
+    <p>Enter your name and email to unlock your personalised EI breakdown. No spam — just Canadian mom money tips.</p>
+    <div class="gate-form">
+      <input type="text" id="gate-name" placeholder="Your first name" autocomplete="given-name" />
+      <input type="email" id="gate-email" placeholder="Your email address" autocomplete="email" />
+      <button class="btn-primary" onclick="unlockCalculator()">Calculate My EI →</button>
+    </div>
+    <p class="gate-note">🔒 No spam. Unsubscribe anytime.</p>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="calculator" id="calculator">
+
+    <!-- INPUTS -->
+    <div class="calc-section fade-up">
+      <div class="calc-section-title">Your Details</div>
+
+      <div class="input-group">
+        <label class="input-label" for="salary">Annual Salary Before Tax</label>
+        <span class="input-sub">Use your gross salary — before any deductions</span>
+        <div class="input-wrap">
+          <span class="input-prefix">$</span>
+          <input class="calc-input" type="number" id="salary" placeholder="75000" min="0" max="500000" oninput="calculate()" />
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-bottom:0">
+        <label class="input-label">Parental Leave Type</label>
+        <span class="input-sub">Standard pays more per week. Extended spreads it longer.</span>
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="btn-standard" onclick="setLeaveType('standard')">
+            Standard
+            <span>40 weeks · $729/wk max</span>
+          </button>
+          <button class="toggle-btn" id="btn-extended" onclick="setLeaveType('extended')">
+            Extended
+            <span>69 weeks · $437/wk max</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="calc-section fade-up" id="results-section" style="display:none">
+      <div class="calc-section-title">Your EI Breakdown</div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-label">Weekly Payout</div>
+          <div class="result-amount" id="res-weekly">—</div>
+          <div class="result-note">per week</div>
+        </div>
+        <div class="result-card">
+          <div class="result-label">Maternity Total</div>
+          <div class="result-amount" id="res-maternity">—</div>
+          <div class="result-note">15 weeks</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="result-label">Your Total EI Estimate</div>
+          <div class="result-amount" id="res-total">—</div>
+          <div class="result-note" id="res-total-note">maternity + parental combined</div>
+        </div>
+      </div>
+
+      <div class="breakdown">
+        <div class="breakdown-title">Full Breakdown</div>
+        <div class="breakdown-row">
+          <span class="label">Your weekly EI amount</span>
+          <span class="value" id="bd-weekly">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label">Maternity (15 weeks)</span>
+          <span class="value" id="bd-maternity">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label" id="bd-parental-label">Parental — your share</span>
+          <span class="value" id="bd-parental">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="label">Set aside for taxes (15%)</span>
+          <span class="value" id="bd-tax">—</span>
+        </div>
+        <div class="breakdown-row total">
+          <span class="label">Your take-home estimate</span>
+          <span class="value" id="bd-takehome">—</span>
+        </div>
+      </div>
+
+      <div class="warn-box">
+        <span class="warn-icon">⚠️</span>
+        <p id="warn-text"><strong>EI is taxable.</strong> These are gross estimates. Set aside 10–15% of every payment for tax time — especially if you earned a high salary in the first half of the year.</p>
+      </div>
+
+      <div class="warn-box" id="partner-box" style="display:none; margin-top:10px;">
+        <span class="warn-icon">👫</span>
+        <p><strong>Partner bonus weeks:</strong> Standard leave has 5 use-it-or-lose-it weeks for your partner. Extended has 8. If your partner doesn't take them — they vanish.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Want the <em>full guide?</em></h3>
+      <p>The Canadian Mom's Guide to EI & Maternity Leave — everything Canada won't tell you, for $7.99.</p>
+      <a href="https://payhip.com/Hermoneyandai" class="btn-white" target="_blank">Get the Guide →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Built with ♥ by <a href="https://instagram.com/hermoneyandai" target="_blank">@hermoneyandai</a><br>
+  All figures based on 2026 EI rates. Maximum insurable earnings: $68,500/yr. Always verify at <a href="https://canada.ca" target="_blank">canada.ca</a>.<br>
+  This tool is for informational purposes only and does not constitute financial advice.</p>
+</footer>
+
+<script>
+  let leaveType = 'standard';
+  const MIE = 68500;
+  const MAX_WEEKLY = 729;
+  const MAX_WEEKLY_EXT = 437;
+  const EI_RATE = 0.55;
+  const MATERNITY_WEEKS = 15;
+  const STANDARD_ONE_PARENT = 35;
+  const EXTENDED_ONE_PARENT = 61;
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('en-CA');
+  }
+
+  function setLeaveType(type) {
+    leaveType = type;
+    document.getElementById('btn-standard').classList.toggle('active', type === 'standard');
+    document.getElementById('btn-extended').classList.toggle('active', type === 'extended');
+    calculate();
+  }
+
+  function calculate() {
+    const salaryVal = document.getElementById('salary').value;
+    if (!salaryVal || salaryVal <= 0) {
+      document.getElementById('results-section').style.display = 'none';
+      return;
+    }
+
+    const salary = Math.min(parseFloat(salaryVal), MIE);
+    const weeklyInsurable = salary / 52;
+    const weeklyEI = Math.min(weeklyInsurable * EI_RATE, leaveType === 'standard' ? MAX_WEEKLY : MAX_WEEKLY_EXT);
+
+    const maternityTotal = weeklyEI * MATERNITY_WEEKS;
+    const parentalWeeks = leaveType === 'standard' ? STANDARD_ONE_PARENT : EXTENDED_ONE_PARENT;
+    const parentalTotal = weeklyEI * parentalWeeks;
+    const combinedTotal = maternityTotal + parentalTotal;
+    const taxSetAside = combinedTotal * 0.15;
+    const takehome = combinedTotal - taxSetAside;
+
+    // Show results
+    const section = document.getElementById('results-section');
+    section.style.display = 'block';
+    section.classList.add('count-anim');
+    setTimeout(() => section.classList.remove('count-anim'), 400);
+
+    document.getElementById('res-weekly').textContent = fmt(weeklyEI);
+    document.getElementById('res-maternity').textContent = fmt(maternityTotal);
+    document.getElementById('res-total').textContent = fmt(combinedTotal);
+    document.getElementById('res-total-note').textContent =
+      `maternity + ${leaveType === 'standard' ? '35' : '61'} wks parental`;
+
+    document.getElementById('bd-weekly').textContent = fmt(weeklyEI) + '/wk';
+    document.getElementById('bd-maternity').textContent = fmt(maternityTotal);
+    document.getElementById('bd-parental-label').textContent =
+      `Parental — your share (${parentalWeeks} wks)`;
+    document.getElementById('bd-parental').textContent = fmt(parentalTotal);
+    document.getElementById('bd-tax').textContent = fmt(taxSetAside);
+    document.getElementById('bd-takehome').textContent = fmt(takehome);
+
+    // Cap warning
+    const warnEl = document.getElementById('warn-text');
+    if (parseFloat(salaryVal) > MIE) {
+      warnEl.innerHTML = `<strong>Your salary is above the EI cap.</strong> EI only covers earnings up to $68,500/yr — so your weekly payout is capped at ${fmt(weeklyEI)}/wk regardless of actual salary.`;
+    } else {
+      warnEl.innerHTML = `<strong>EI is taxable.</strong> These are gross estimates. Set aside 10–15% of every payment for tax time — especially if you earned a high salary in the first half of the year.`;
+    }
+
+    document.getElementById('partner-box').style.display = 'flex';
+  }
+
+  function unlockCalculator() {
+    const name = document.getElementById('gate-name').value.trim();
+    const email = document.getElementById('gate-email').value.trim();
+
+    if (!name) { document.getElementById('gate-name').focus(); return; }
+    if (!email || !email.includes('@')) { document.getElementById('gate-email').focus(); return; }
+
+    // Save to localStorage for now
+    const entry = { name, email, date: new Date().toISOString() };
+    const existing = JSON.parse(localStorage.getItem('ei_calc_leads') || '[]');
+    existing.push(entry);
+    localStorage.setItem('ei_calc_leads', JSON.stringify(existing));
+
+    // Send to Google Sheet via GET request - no CORS issues
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwemVYX-VQWNVOQM9T0lW9KCNxFx38LS3YxJAqXam8lKzNpVXcOBtNOAQM3MFDQ3Axd/exec';
+    const params = `?name=${encodeURIComponent(entry.name)}&email=${encodeURIComponent(entry.email)}&source=EI+Calculator`;
+    const img = new Image();
+    img.src = scriptURL + params;
+
+    // Hide gate, show calculator
+    document.getElementById('gate').style.display = 'none';
+    const calc = document.getElementById('calculator');
+    calc.classList.add('visible');
+    calc.classList.add('fade-up');
+
+    // Personalise
+    const heroP = document.querySelector('.hero p');
+    heroP.textContent = `Hi ${name}! Enter your salary below to see your real EI numbers.`;
+
+    // Auto-calculate if salary already entered
+    calculate();
+
+    // Scroll to calculator
+    setTimeout(() => calc.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
+  // Allow Enter key on gate
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const gate = document.getElementById('gate');
+      if (gate.style.display !== 'none') unlockCalculator();
+    }
+  });
+</script>
+
+</body>
+</html>
