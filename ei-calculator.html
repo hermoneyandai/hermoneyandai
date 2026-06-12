@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EI Maternity Leave Calculator 2026 · Her Money & AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --tc:#C17C74;--tcl:#F5E8E6;--tcm:#E8C4BF;
+  --plum:#7D6E8A;--amber:#B5763A;--sage:#6B8F71;--sagel:#E2EFE4;
+  --cream:#FAF6F0;--creamd:#EDE6D9;
+  --dark:#2A1F1A;--mid:#5C4A42;--muted:#A8948A;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--dark);line-height:1.6}
+
+nav{background:var(--cream);border-bottom:1px solid var(--creamd);padding:0 2rem;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--dark);text-decoration:none}
+.nav-logo span{color:var(--tc)}
+.nav-back{font-size:.75rem;font-weight:500;color:var(--mid);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--tc)}
+
+.hero{background:var(--dark);padding:3rem 2rem 2.5rem}
+.hero-inner{max-width:760px;margin:0 auto}
+.hero-ey{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--tc);margin-bottom:.6rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:#fff;line-height:1.2;margin-bottom:.6rem}
+.hero h1 em{font-style:italic;font-weight:400;color:#F5DDD4}
+.hero p{font-size:.88rem;color:rgba(255,255,255,.5);font-weight:300}
+
+.main{max-width:760px;margin:0 auto;padding:2rem}
+
+.card{background:var(--white);border:1px solid var(--creamd);border-radius:10px;padding:1.75rem;margin-bottom:1.25rem}
+.card-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem}
+.card-icon{width:28px;height:28px;border-radius:6px;background:var(--tcl);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.8rem;font-weight:500;color:var(--mid);margin-bottom:.4rem}
+.field label span{font-weight:300;color:var(--muted)}
+.field input,.field select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--creamd);border-radius:6px;font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--dark);background:var(--cream);outline:none;transition:border-color .2s;appearance:none;-webkit-appearance:none}
+.field input:focus,.field select:focus{border-color:var(--tc);background:#fff}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field-hint{font-size:.72rem;color:var(--muted);margin-top:.3rem}
+
+.region-info{background:var(--tcl);border-left:3px solid var(--tc);border-radius:0 6px 6px 0;padding:.7rem .9rem;margin-top:.5rem;font-size:.78rem;color:var(--mid);display:none}
+.region-info.show{display:block}
+.region-info strong{color:var(--tc)}
+
+/* MODE TOGGLE */
+.mode-toggle{display:flex;gap:.5rem;margin-bottom:1.25rem}
+.mode-btn{flex:1;padding:.6rem;border:1.5px solid var(--creamd);border-radius:6px;background:var(--cream);font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:500;color:var(--mid);cursor:pointer;transition:all .2s;text-align:center}
+.mode-btn.active{background:var(--tc);border-color:var(--tc);color:#fff}
+.mode-section{display:none}
+.mode-section.show{display:block}
+
+.best-weeks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.6rem;margin-top:.75rem}
+.week-input{display:flex;flex-direction:column;gap:.25rem}
+.week-input label{font-size:.68rem;font-weight:500;color:var(--muted)}
+.week-input input{padding:.5rem .6rem;font-size:.85rem}
+
+.btn-calc{width:100%;padding:.9rem;background:var(--tc);color:#fff;border:none;border-radius:8px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.btn-calc:hover{background:#A3625A}
+
+/* RESULTS */
+.results{display:none}
+.results.show{display:block}
+
+.result-peek{background:var(--dark);border-radius:10px;padding:1.5rem;margin-bottom:1rem;text-align:center}
+.result-peek p{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.35rem}
+.result-amount{font-family:'Playfair Display',serif;font-size:3rem;color:#fff;font-weight:600}
+.result-amount span{font-size:1.2rem;font-weight:300;color:rgba(255,255,255,.5)}
+.result-sub{font-size:.8rem;color:rgba(255,255,255,.4);margin-top:.25rem}
+
+/* GUIDE CTA — visible before gate */
+.guide-cta-peek{background:var(--tcl);border:1px solid var(--tcm);border-radius:10px;padding:1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
+.guide-cta-peek-text h3{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--dark);margin-bottom:.2rem}
+.guide-cta-peek-text p{font-size:.76rem;color:var(--mid);line-height:1.5}
+.btn-guide-peek{padding:.6rem 1rem;background:var(--tc);color:#fff;border:none;border-radius:6px;font-family:'Poppins',sans-serif;font-size:.76rem;font-weight:500;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s;flex-shrink:0}
+.btn-guide-peek:hover{background:#A3625A}
+
+/* EMAIL GATE */
+.email-gate{background:var(--white);border:2px solid var(--tc);border-radius:10px;padding:1.5rem;margin-bottom:1rem;text-align:center}
+.email-gate h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin-bottom:.4rem}
+.email-gate p{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+.email-row{display:flex;gap:.5rem;max-width:420px;margin:0 auto}
+.email-row input{flex:1;padding:.7rem .9rem;border:1.5px solid var(--creamd);border-radius:6px;font-family:'Poppins',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s}
+.email-row input:focus{border-color:var(--tc)}
+.btn-email{padding:.7rem 1.1rem;background:var(--tc);color:#fff;border:none;border-radius:6px;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .2s}
+.btn-email:hover{background:#A3625A}
+.email-note{font-size:.7rem;color:var(--muted);margin-top:.5rem}
+
+/* FULL RESULTS (locked behind gate) */
+.full-results{display:none}
+.full-results.show{display:block}
+
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.result-item{background:var(--white);border:1px solid var(--creamd);border-radius:8px;padding:1rem}
+.result-item-label{font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.result-item-value{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:var(--dark)}
+.result-item-value.tc{color:var(--tc)}
+.result-item-value.sage{color:var(--sage)}
+.result-item-sub{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+
+.comparison{background:var(--white);border:1px solid var(--creamd);border-radius:10px;overflow:hidden;margin-bottom:1rem}
+.comp-hdr{background:var(--tcl);padding:.75rem 1rem}
+.comp-hdr p{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tc)}
+.comp-row{display:grid;grid-template-columns:1.2fr 1fr 1fr;padding:.875rem 1rem;border-bottom:1px solid var(--creamd);align-items:center}
+.comp-row:last-child{border-bottom:none}
+.comp-row.hl{background:var(--sagel)}
+.comp-row p{font-size:.82rem;color:var(--mid)}
+.comp-row p:first-child{font-weight:500;color:var(--dark)}
+.comp-col-hdr{background:var(--cream)}
+.comp-col-hdr p{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+
+.family-total{background:var(--tcl);border:1px solid var(--tcm);border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+.ft-title{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tc);margin-bottom:.75rem}
+.ft-row{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--tcm);font-size:.85rem}
+.ft-row:last-child{border-bottom:none;font-weight:600;font-size:.95rem;color:var(--dark);padding-top:.6rem}
+.ft-row span:last-child{font-weight:500;color:var(--dark)}
+
+.tax-note{background:var(--cream);border:1px solid var(--creamd);border-radius:8px;padding:1rem;margin-bottom:1rem}
+.tax-title{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.tax-note p{font-size:.8rem;color:var(--mid);line-height:1.6}
+.tax-note strong{color:var(--dark)}
+
+.guide-cta-full{background:var(--dark);border-radius:10px;padding:1.5rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.25rem}
+.guide-cta-full-text h3{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:.3rem}
+.guide-cta-full-text p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.5}
+.btn-guide-full{padding:.65rem 1.1rem;background:var(--tc);color:#fff;border:none;border-radius:6px;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s;flex-shrink:0}
+.btn-guide-full:hover{background:#A3625A}
+
+.disclaimer{font-size:.72rem;color:var(--muted);line-height:1.6;text-align:center;padding:1rem 0 2rem}
+.disclaimer a{color:var(--tc)}
+
+footer{background:var(--dark);color:rgba(255,255,255,.4);padding:1.5rem 2rem;text-align:center;font-size:.75rem}
+footer a{color:var(--tc);text-decoration:none}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:.3rem}
+
+@media(max-width:600px){
+  .field-row{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr}
+  .comp-row{grid-template-columns:1fr;gap:.2rem}
+  .guide-cta-peek,.guide-cta-full{flex-direction:column;text-align:center}
+  .email-row{flex-direction:column}
+  .best-weeks-grid{grid-template-columns:1fr 1fr}
+  .mode-toggle{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Her Money <span>&</span> AI</a>
+  <a class="nav-back" href="index.html">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-ey">Free Calculator · 2026 Official Rates</p>
+    <h1>EI Maternity Leave <em>Calculator</em></h1>
+    <p>Uses the official Service Canada best-weeks formula — not just your annual salary. Get your real numbers.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- STEP 1: REGION -->
+  <div class="card">
+    <p class="card-title"><span class="card-icon">📍</span> Step 1 — Your EI Region</p>
+    <div class="field">
+      <label for="region">Select your region <span>— affects your best weeks divisor</span></label>
+      <select id="region" onchange="updateRegion()">
+        <option value="">Select your region...</option>
+        <optgroup label="Ontario">
+          <option value="22|6.3|21">Ottawa (6.3%)</option>
+          <option value="23|5.2|22">Eastern Ontario (5.2%)</option>
+          <option value="24|5.6|22">Kingston (5.6%)</option>
+          <option value="25|6.4|21">Central Ontario (6.4%)</option>
+          <option value="26|8.4|19">Oshawa (8.4%)</option>
+          <option value="27|7.7|20">Toronto (7.7%)</option>
+          <option value="28|6.8|21">Hamilton (6.8%)</option>
+          <option value="29|6.6|21">St. Catharines (6.6%)</option>
+          <option value="30|8.4|19">London (8.4%)</option>
+          <option value="31|7.4|20">Niagara (7.4%)</option>
+          <option value="32|8.2|19">Windsor (8.2%)</option>
+          <option value="33|8.0|20">Kitchener (8.0%)</option>
+          <option value="34|7.2|20">Huron (7.2%)</option>
+          <option value="35|6.4|21">South Central Ontario (6.4%)</option>
+          <option value="36|6.3|21">Sudbury (6.3%)</option>
+          <option value="37|5.7|22">Thunder Bay (5.7%)</option>
+          <option value="38|7.7|20">Northern Ontario (7.7%)</option>
+        </optgroup>
+        <optgroup label="British Columbia">
+          <option value="50|8.2|19">Southern Interior BC (8.2%)</option>
+          <option value="51|7.6|20">Abbotsford (7.6%)</option>
+          <option value="52|6.7|21">Vancouver (6.7%)</option>
+          <option value="53|4.5|22">Victoria (4.5%)</option>
+          <option value="54|7.7|20">Southern Coastal BC (7.7%)</option>
+          <option value="55|9.8|18">Northern BC (9.8%)</option>
+        </optgroup>
+        <optgroup label="Alberta">
+          <option value="46|7.1|20">Calgary (7.1%)</option>
+          <option value="47|6.9|21">Edmonton (6.9%)</option>
+          <option value="48|9.6|18">Northern Alberta (9.6%)</option>
+          <option value="49|6.9|21">Southern Alberta (6.9%)</option>
+        </optgroup>
+        <optgroup label="Quebec — QPIP applies">
+          <option value="q">Quebec City (3.8%) — uses QPIP</option>
+          <option value="q">Montreal (7.1%) — uses QPIP</option>
+          <option value="q">Quebec (all regions) — uses QPIP</option>
+        </optgroup>
+        <optgroup label="Manitoba">
+          <option value="39|5.9|22">Winnipeg (5.9%)</option>
+          <option value="40|5.7|22">Southern Manitoba (5.7%)</option>
+          <option value="41|29.0|14">Northern Manitoba (29.0%)</option>
+        </optgroup>
+        <optgroup label="Saskatchewan">
+          <option value="42|6.0|22">Regina (6.0%)</option>
+          <option value="43|6.1|21">Saskatoon (6.1%)</option>
+          <option value="44|6.0|22">Southern Saskatchewan (6.0%)</option>
+          <option value="45|14.9|14">Northern Saskatchewan (14.9%)</option>
+        </optgroup>
+        <optgroup label="Nova Scotia">
+          <option value="04|9.1|18">Eastern Nova Scotia (9.1%)</option>
+          <option value="05|6.8|21">Western Nova Scotia (6.8%)</option>
+          <option value="06|5.7|22">Halifax (5.7%)</option>
+        </optgroup>
+        <optgroup label="New Brunswick">
+          <option value="07|6.7|21">Fredericton-Moncton-Saint John (6.7%)</option>
+          <option value="08|4.5|22">Madawaska-Charlotte (4.5%)</option>
+          <option value="09|10.4|17">Restigouche-Albert (10.4%)</option>
+        </optgroup>
+        <optgroup label="Newfoundland & Labrador">
+          <option value="01|7.0|21">St. John's (7.0%)</option>
+          <option value="02|11.3|16">Newfoundland/Labrador excl. St. John's (11.3%)</option>
+        </optgroup>
+        <optgroup label="Prince Edward Island">
+          <option value="65|6.2|21">Charlottetown (6.2%)</option>
+          <option value="66|9.0|19">PEI excl. Charlottetown (9.0%)</option>
+        </optgroup>
+        <optgroup label="Territories">
+          <option value="59|5.6|22">Whitehorse, Yukon (5.6%)</option>
+          <option value="60|8.0|20">Yukon excl. Whitehorse (8.0%)</option>
+          <option value="61|5.8|22">Yellowknife, NWT (5.8%)</option>
+          <option value="62|11.2|16">NWT excl. Yellowknife (11.2%)</option>
+          <option value="63|5.4|22">Iqaluit, Nunavut (5.4%)</option>
+          <option value="64|16.3|14">Nunavut excl. Iqaluit (16.3%)</option>
+        </optgroup>
+      </select>
+      <div class="region-info" id="regionInfo"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: EARNINGS -->
+  <div class="card" id="earningsCard" style="opacity:.5;pointer-events:none">
+    <p class="card-title"><span class="card-icon">💰</span> Step 2 — Your Earnings</p>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setMode('salary')" id="btnSalary">I have a salary</button>
+      <button class="mode-btn" onclick="setMode('weekly')" id="btnWeekly">I know my weekly pay</button>
+      <button class="mode-btn" onclick="setMode('variable')" id="btnVariable">My income varies</button>
+    </div>
+
+    <!-- SALARY MODE -->
+    <div class="mode-section show" id="modeSalary">
+      <div class="field">
+        <label for="annualSalary">Annual salary (gross, before tax)</label>
+        <input type="number" id="annualSalary" placeholder="e.g. 75000" min="0" max="300000">
+        <p class="field-hint">Your weekly insurable earnings = salary ÷ 52. Capped at $68,900/year max insurable.</p>
+      </div>
+    </div>
+
+    <!-- WEEKLY MODE -->
+    <div class="mode-section" id="modeWeekly">
+      <div class="field">
+        <label for="weeklyPay">Average weekly gross pay</label>
+        <input type="number" id="weeklyPay" placeholder="e.g. 1442" min="0" max="2000">
+        <p class="field-hint">Your gross (before tax) weekly pay. Capped at $1,325/week (max insurable).</p>
+      </div>
+    </div>
+
+    <!-- VARIABLE MODE -->
+    <div class="mode-section" id="modeVariable">
+      <p style="font-size:.82rem;color:var(--mid);font-weight:300;margin-bottom:.5rem">Enter your <strong id="divisorLabel">best weeks</strong> of gross weekly pay — highest earning weeks first.</p>
+      <div class="best-weeks-grid" id="weeksGrid"></div>
+      <p class="field-hint" style="margin-top:.75rem">💡 Find on your pay stubs. Enter gross (before tax) weekly amounts for your highest paid weeks.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3: LEAVE TYPE -->
+  <div class="card" id="leaveCard" style="opacity:.5;pointer-events:none">
+    <p class="card-title"><span class="card-icon">👶</span> Step 3 — Leave Details</p>
+    <div class="field-row">
+      <div class="field">
+        <label for="leaveType">Parental leave type</label>
+        <select id="leaveType">
+          <option value="standard">Standard — 40 weeks at 55%</option>
+          <option value="extended">Extended — 69 weeks at 33%</option>
+        </select>
+        <p class="field-hint">Whoever applies first locks this in for both parents</p>
+      </div>
+      <div class="field">
+        <label for="partnerWeeks">Partner taking parental weeks?</label>
+        <select id="partnerWeeks">
+          <option value="0">No / Not sure</option>
+          <option value="5">Yes — standard (5 bonus weeks)</option>
+          <option value="8">Yes — extended (8 bonus weeks)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-calc" onclick="calculate()">Calculate My EI Benefits →</button>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div style="height:1.5rem"></div>
+
+    <!-- HARD EMAIL GATE — nothing shown until email entered -->
+    <div class="email-gate" id="emailGate">
+      <h3>Your results are ready 🍁</h3>
+      <p>Enter your email to unlock your full EI breakdown — weekly amount, standard vs extended comparison, total family benefits, and tax breakdown.</p>
+      <div class="email-row">
+        <input type="email" id="emailInput" placeholder="your@email.com" onkeydown="if(event.key==='Enter')saveEmail()">
+        <button class="btn-email" onclick="saveEmail()">Show my results →</button>
+      </div>
+      <p class="email-note">No spam. Unsubscribe anytime. 🍁</p>
+    </div>
+
+    <!-- FULL RESULTS — hidden until email submitted -->
+    <div class="full-results" id="fullResults">
+
+      <div class="result-peek">
+        <p>Your estimated weekly EI payment</p>
+        <div class="result-amount" id="weeklyGross">$0 <span>/week gross</span></div>
+        <div class="result-sub" id="weeklyNet"></div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-item">
+          <p class="result-item-label">Best weeks divisor</p>
+          <p class="result-item-value tc" id="divisorResult">—</p>
+          <p class="result-item-sub" id="divisorSub">weeks used</p>
+        </div>
+        <div class="result-item">
+          <p class="result-item-label">Avg weekly insurable earnings</p>
+          <p class="result-item-value" id="avgWeekly">—</p>
+          <p class="result-item-sub">before 55% is applied</p>
+        </div>
+        <div class="result-item">
+          <p class="result-item-label">Maternity total</p>
+          <p class="result-item-value sage" id="maternityTotal">—</p>
+          <p class="result-item-sub">15 weeks · birth parent only</p>
+        </div>
+        <div class="result-item">
+          <p class="result-item-label">Your parental total</p>
+          <p class="result-item-value sage" id="parentalTotal">—</p>
+          <p class="result-item-sub" id="parentalSub">—</p>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="comp-hdr"><p>Standard vs Extended — side by side</p></div>
+        <div class="comp-row comp-col-hdr">
+          <p></p><p>Standard</p><p>Extended</p>
+        </div>
+        <div class="comp-row">
+          <p>Benefit rate</p><p>55%</p><p>33%</p>
+        </div>
+        <div class="comp-row">
+          <p>Weekly amount</p>
+          <p id="cmpStdWk">—</p>
+          <p id="cmpExtWk">—</p>
+        </div>
+        <div class="comp-row">
+          <p>Your parental weeks</p><p>35 weeks</p><p>61 weeks</p>
+        </div>
+        <div class="comp-row">
+          <p>Your parental total</p>
+          <p id="cmpStdPar">—</p>
+          <p id="cmpExtPar">—</p>
+        </div>
+        <div class="comp-row" id="cmpGrandRow">
+          <p><strong>Mat + parental total</strong></p>
+          <p id="cmpStdGrand"><strong>—</strong></p>
+          <p id="cmpExtGrand"><strong>—</strong></p>
+        </div>
+      </div>
+
+      <div class="tax-note">
+        <p class="tax-title">⚠️ EI is taxable — Canada under-withholds</p>
+        <p>All amounts above are <strong>gross (before tax)</strong>. If you worked Jan–Jun at a high salary then took leave, you will likely owe tax in April. <strong>Set aside 10–15% of every EI payment</strong> in a separate account now.</p>
+      </div>
+
+      <div class="family-total">
+        <p class="ft-title">🍁 Total government money available to your family</p>
+        <div class="ft-row"><span>Your EI (mat + parental)</span><span id="ftEI">—</span></div>
+        <div class="ft-row"><span>CCB — Canada Child Benefit (year 1)</span><span>~$7,997</span></div>
+        <div class="ft-row"><span>RESP — CESG grant (year 1)</span><span>Up to $500</span></div>
+        <div class="ft-row"><span>GST/HST credit</span><span>~$500</span></div>
+        <div class="ft-row"><span><strong>Estimated family total</strong></span><span id="ftTotal">—</span></div>
+      </div>
+
+      <div class="guide-cta-full">
+        <div class="guide-cta-full-text">
+          <h3>Want the full EI & mat leave guide?</h3>
+          <p>How to apply step by step, ROE issues, tax surprises, travelling outside Canada on mat leave, and every 2026 number in one place.</p>
+        </div>
+        <a href="https://payhip.com/b/wVC2i" target="_blank" class="btn-guide-full">Get the guide →</a>
+      </div>
+
+      <p class="disclaimer">⚠️ Results are estimates based on the official Service Canada best-weeks formula and verified 2026 rates from <a href="https://srv129.services.gc.ca/eiregions/eng/rates_cur.aspx" target="_blank">canada.ca</a>. Actual benefits depend on your ROE and Service Canada processing. Always verify at <a href="https://canada.ca/en/services/benefits/ei/ei-maternity-parental.html" target="_blank">canada.ca</a> or call 1-800-206-7218. For educational purposes only — not financial advice.</p>
+
+    </div>
+  </div>
+
+<footer>
+  <p class="footer-logo">Her Money & AI</p>
+  <p>hermoneyandai.ca · <a href="https://instagram.com/hermoneyandai">@hermoneyandai</a> · Cambridge, Ontario 🍁</p>
+  <p style="margin-top:.5rem;font-size:.68rem">Content is for educational purposes only and does not constitute financial advice.</p>
+</footer>
+
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwemVYX-VQWNVOQM9T0lW9KCNxFx38LS3YxJAqXam8lKzNpVXcOBtNOAQM3MFDQ3Axd/exec';
+const MAX_INSURABLE_WEEKLY=68900/52;
+const MAX_STD=729;
+const MAX_EXT=437;
+
+let currentDivisor=20;
+let currentMode='salary';
+
+function getDivisor(rate){
+  if(rate<=6.0)return 22;
+  if(rate<=7.0)return 21;
+  if(rate<=8.0)return 20;
+  if(rate<=9.0)return 19;
+  if(rate<=10.0)return 18;
+  if(rate<=11.0)return 17;
+  if(rate<=12.0)return 16;
+  if(rate<=13.0)return 15;
+  return 14;
+}
+
+function updateRegion(){
+  const sel=document.getElementById('region');
+  const val=sel.value;
+  const info=document.getElementById('regionInfo');
+  const earningsCard=document.getElementById('earningsCard');
+  const leaveCard=document.getElementById('leaveCard');
+
+  if(!val){info.classList.remove('show');return;}
+
+  if(val==='q'){
+    info.innerHTML='⚠️ <strong>Quebec uses QPIP</strong>, not federal EI, for maternity and parental benefits. This calculator does not apply. Visit <a href="https://rqap.gouv.qc.ca" target="_blank" style="color:var(--tc)">rqap.gouv.qc.ca</a> for QPIP.';
+    info.classList.add('show');
+    earningsCard.style.opacity='0.4';
+    earningsCard.style.pointerEvents='none';
+    return;
+  }
+
+  const parts=val.split('|');
+  const rate=parseFloat(parts[1]);
+  const divisor=parseInt(parts[2]);
+  currentDivisor=divisor;
+
+  info.innerHTML=`<strong>Unemployment rate: ${rate}%</strong> — Service Canada will use your best <strong>${divisor} weeks</strong> of earnings.`;
+  info.classList.add('show');
+
+  earningsCard.style.opacity='1';
+  earningsCard.style.pointerEvents='auto';
+  leaveCard.style.opacity='1';
+  leaveCard.style.pointerEvents='auto';
+
+  buildWeekInputs(divisor);
+}
+
+function setMode(mode){
+  currentMode=mode;
+  ['salary','weekly','variable'].forEach(m=>{
+    document.getElementById('mode'+m.charAt(0).toUpperCase()+m.slice(1)).classList.toggle('show',m===mode);
+    document.getElementById('btn'+m.charAt(0).toUpperCase()+m.slice(1)).classList.toggle('active',m===mode);
+  });
+}
+
+function buildWeekInputs(divisor){
+  document.getElementById('divisorLabel').textContent=`best ${divisor}`;
+  const grid=document.getElementById('weeksGrid');
+  grid.innerHTML='';
+  for(let i=1;i<=divisor;i++){
+    grid.innerHTML+=`<div class="week-input"><label>Week ${i}</label><input type="number" id="week${i}" placeholder="$0" min="0" max="3000" step="1"></div>`;
+  }
+}
+
+function getAvgWeekly(){
+  const cap=MAX_INSURABLE_WEEKLY;
+  if(currentMode==='salary'){
+    const annual=parseFloat(document.getElementById('annualSalary').value)||0;
+    const cappedAnnual=Math.min(annual,68900);
+    return cappedAnnual/52;
+  }
+  if(currentMode==='weekly'){
+    const w=parseFloat(document.getElementById('weeklyPay').value)||0;
+    return Math.min(w,cap);
+  }
+  // variable
+  let weeks=[];
+  for(let i=1;i<=currentDivisor;i++){
+    const v=parseFloat(document.getElementById(`week${i}`)?.value)||0;
+    weeks.push(Math.min(v,cap));
+  }
+  weeks.sort((a,b)=>b-a);
+  const best=weeks.slice(0,currentDivisor);
+  const total=best.reduce((a,b)=>a+b,0);
+  return total/currentDivisor;
+}
+
+function calculate(){
+  const regionVal=document.getElementById('region').value;
+  if(!regionVal||regionVal==='q'){alert('Please select your EI region first.');return;}
+
+  const avgWeekly=getAvgWeekly();
+  if(avgWeekly<=0){alert('Please enter your earnings first.');return;}
+
+  const stdWeekly=Math.min(avgWeekly*0.55,MAX_STD);
+  const extWeekly=Math.min(avgWeekly*0.33,MAX_EXT);
+
+  const maternityTotal=stdWeekly*15;
+  const leaveType=document.getElementById('leaveType').value;
+  const isStd=leaveType==='standard';
+  const myWeekly=isStd?stdWeekly:extWeekly;
+  const myParentalWks=isStd?35:61;
+  const myParentalTotal=myWeekly*myParentalWks;
+  const myTotal=maternityTotal+myParentalTotal;
+
+  const stdParTotal=stdWeekly*35;
+  const extParTotal=extWeekly*61;
+  const stdGrand=maternityTotal+stdParTotal;
+  const extGrand=maternityTotal+extParTotal;
+
+  const familyTotal=myTotal+7997+500+500;
+
+  const fmt=n=>'$'+Math.round(n).toLocaleString('en-CA');
+
+  // Show peek
+  document.getElementById('weeklyGross').innerHTML=`${fmt(myWeekly)} <span>/week gross</span>`;
+  document.getElementById('weeklyNet').textContent=`Estimated after tax: ~${fmt(myWeekly*0.87)}/week — set aside 10-15% for taxes`;
+
+  // Store for full results
+  window._calcResults={avgWeekly,stdWeekly,extWeekly,maternityTotal,myParentalTotal,myParentalWks,myTotal,stdParTotal,extParTotal,stdGrand,extGrand,familyTotal,isStd,fmt};
+
+  // Store results for after email gate
+  document.getElementById('results').classList.add('show');
+  document.getElementById('emailGate').style.display='block';
+  document.getElementById('fullResults').classList.remove('show');
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function unlockFullResults(){
+  const r=window._calcResults;
+  if(!r)return;
+  const{avgWeekly,stdWeekly,extWeekly,maternityTotal,myParentalTotal,myParentalWks,myTotal,stdParTotal,extParTotal,stdGrand,extGrand,familyTotal,isStd,fmt}=r;
+
+  document.getElementById('divisorResult').textContent=currentDivisor;
+  document.getElementById('divisorSub').textContent=`weeks used for your region`;
+  document.getElementById('avgWeekly').textContent=fmt(avgWeekly);
+  document.getElementById('maternityTotal').textContent=fmt(maternityTotal);
+  document.getElementById('parentalTotal').textContent=fmt(myParentalTotal);
+  document.getElementById('parentalSub').textContent=`${myParentalWks} weeks · ${isStd?'standard':'extended'} rate`;
+
+  document.getElementById('cmpStdWk').textContent=fmt(stdWeekly);
+  document.getElementById('cmpExtWk').textContent=fmt(extWeekly);
+  document.getElementById('cmpStdPar').textContent=fmt(stdParTotal);
+  document.getElementById('cmpExtPar').textContent=fmt(extParTotal);
+  document.getElementById('cmpStdGrand').innerHTML=`<strong>${fmt(stdGrand)}</strong>`;
+  document.getElementById('cmpExtGrand').innerHTML=`<strong>${fmt(extGrand)}</strong>`;
+
+  // Highlight chosen
+  const grandRow=document.getElementById('cmpGrandRow');
+  grandRow.classList.remove('hl');
+  grandRow.classList.add('hl');
+
+  document.getElementById('ftEI').textContent=fmt(myTotal);
+  document.getElementById('ftTotal').textContent=fmt(familyTotal);
+
+  document.getElementById('fullResults').classList.add('show');
+  document.getElementById('fullResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+async function saveEmail(){
+  const email=document.getElementById('emailInput').value.trim();
+  if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please enter a valid email address.');return;
+  }
+  try{
+    await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(email)}&source=ei-calculator-v2`,{mode:'no-cors'});
+  }catch(e){}
+  document.getElementById('emailGate').innerHTML='<p style="color:var(--sage);font-weight:500;padding:.75rem 0;font-size:.9rem">✓ Done! Unlocking your full results... 🍁</p>';
+  setTimeout(()=>{
+    document.getElementById('emailGate').style.display='none';
+    unlockFullResults();
+  },800);
+}
+</script>
+</body>
+</html>
