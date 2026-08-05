@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me · Her Money & AI</title>
+<meta name="description" content="Meet Kirti — Canadian finance professional and mom behind Her Money & AI.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2D4F;--tc:#C17C74;--tc-d:#A8635B;--tc-l:#FAF3F1;--tc-m:#E8B5AB;--dark:#2c2c2c;--mid:#666;--light:#AAA;--border:#e8ddd9}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Lato',sans-serif;background:#fff;color:var(--dark);min-height:100vh}
+.hdr{background:var(--navy);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Lora',serif;font-size:15px;font-weight:700;color:#fff;text-decoration:none}
+.logo em{color:var(--tc-m);font-style:italic;font-weight:400}
+
+/* Header + Hamburger Menu */
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hamburger{background:none;border:none;cursor:pointer;padding:4px;display:flex;flex-direction:column;gap:4px;width:28px}
+.hamburger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px}
+.menu-overlay{position:fixed;inset:0;background:rgba(27,45,79,0.4);z-index:199;opacity:0;pointer-events:none;transition:opacity 0.25s}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-panel{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;z-index:200;transition:right 0.3s ease;padding:24px 0;overflow-y:auto}
+.menu-panel.open{right:0}
+.menu-close{background:none;border:none;font-size:20px;color:var(--mid);padding:0 20px 20px;cursor:pointer;display:block}
+.menu-item{display:flex;align-items:center;gap:12px;padding:15px 22px;text-decoration:none;color:var(--dark);font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;border-bottom:0.5px solid var(--border)}
+.menu-item span.mi-icon{font-size:16px}
+
+.hero{background:var(--navy);padding:36px 20px 44px;text-align:center}
+.photo{width:120px;height:120px;border-radius:50%;margin:0 auto 18px;overflow:hidden;border:3px solid rgba(255,255,255,0.2)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.h1{font-family:'Lora',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.3}
+.h1 em{font-style:italic;font-weight:400;color:var(--tc-m)}
+.h-sub{font-size:12.5px;color:rgba(255,255,255,0.65);margin-top:10px}
+
+.content{padding:28px 22px;max-width:520px;margin:0 auto}
+.p{font-size:14px;color:var(--dark);line-height:1.85;margin-bottom:18px}
+.p strong{color:var(--tc-d)}
+.tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 20px 30px}
+.tag{background:var(--tc-l);color:var(--tc-d);font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;padding:8px 14px;border-radius:99px}
+
+.cta-section{background:var(--tc-l);padding:30px 20px;text-align:center}
+.cta-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:14px}
+.cta-btn{display:inline-block;background:var(--tc);color:#fff;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;padding:13px 28px;border-radius:99px;text-decoration:none;margin:0 6px 10px}
+.cta-btn.outline{background:#fff;color:var(--tc-d);border:1.5px solid var(--tc)}
+
+.footer{padding:20px;text-align:center;font-family:'Lato',sans-serif;font-size:10px;color:var(--light);line-height:1.7}
+.footer strong{color:var(--dark)}
+
+/* Body illustration block — image left, text right */
+.story-block{padding:0 0 8px;max-width:680px;margin:0 auto}
+.story-inner{display:flex;flex-direction:column;gap:18px}
+.story-img{width:100%;display:block;box-shadow:0 4px 20px rgba(27,45,79,0.1)}
+.story-text{padding:0 22px}
+.story-text .p{margin-bottom:14px}
+
+@media (min-width:640px){
+  .story-inner{flex-direction:row;align-items:center;gap:32px}
+  .story-img{width:56%;flex-shrink:0;border-radius:16px}
+  .story-text{width:44%;padding:0 22px 0 0}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo">Her Money <em>& AI</em></a>
+  <button class="hamburger" onclick="toggleMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+<nav class="menu-panel" id="menuPanel">
+  <button class="menu-close" onclick="toggleMenu(false)">✕</button>
+  <a href="about.html" class="menu-item">About Me</a>
+  <a href="picks.html" class="menu-item">Favourite Picks</a>
+  <a href="guides.html" class="menu-item">Guides</a>
+  <a href="tools.html" class="menu-item">Free Tools</a>
+  <a href="partner-with-me.html" class="menu-item">Partner With Me</a>
+  <a href="information-directory.html" class="menu-item">Information Directory</a>
+</nav>
+
+<section class="hero">
+  <div class="photo">
+    <img src="Profile.png" alt="Kirti Thakran" onerror="this.parentElement.innerHTML='🍁'">
+  </div>
+  <div class="h1">Hi, I'm <em>Kirti</em> 🍁</div>
+  <div class="h-sub">Canadian finance professional · New mom · Building this on maternity leave</div>
+</section>
+
+<div class="story-block">
+  <div class="story-inner">
+    <img class="story-img" src="about-hero.png" alt="Her Money & AI — Kirti Thakran">
+    <div class="story-text">
+      <div class="p"><strong>Smart money. Strong mama.</strong> That's the whole mission — helping Canadian parents make confident money decisions and build a better life for their little ones, one real, honest post at a time.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <p class="p">Being a parent in Canada is <strong>confusing</strong>. Between EI, maternity leave, CCB, RESPs, and the mountain of paperwork nobody warns you about — I found myself piecing it together from a dozen different government websites while running on three hours of sleep.</p>
+  <p class="p">So I started writing it all down. Not as legal advice, not as a lecture — just as one Canadian mom sharing exactly what I learned, with real numbers, real receipts, and zero fluff.</p>
+  <p class="p">I'm a <strong>finance professional</strong> by background, which means I care a lot about getting the numbers right. But I'm also just a mom on maternity leave, figuring out solids, sleep regressions, and everything in between — same as you.</p>
+  <p class="p">This page, this whole site, exists so that being a new parent in Canada feels a little less overwhelming, and a little more <strong>decoded</strong>.</p>
+</div>
+
+<div class="tags">
+  <div class="tag">Finance Professional</div>
+  <div class="tag">Canadian Mom</div>
+  <div class="tag">Content Creator</div>
+  <div class="tag">Numbers-Driven</div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-title">Let's stay connected</div>
+  <a href="https://instagram.com/hermoneyandai" target="_blank" class="cta-btn">📸 Follow on Instagram</a>
+  <a href="partner-with-me.html" class="cta-btn outline">Partner With Me</a>
+</div>
+
+<footer class="footer">
+  <strong>Her Money & AI</strong> · Kirti Thakran · hermoneyandai.ca 🍁
+</footer>
+
+<script>
+function toggleMenu(open){
+  document.getElementById('menuOverlay').classList.toggle('open', open);
+  document.getElementById('menuPanel').classList.toggle('open', open);
+}
+</script>
+
+</body>
+</html>
