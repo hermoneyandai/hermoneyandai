@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Guides · Her Money & AI</title>
+<meta name="description" content="Digital guides for Canadian parents — EI, birth admin, baby documents, and government benefits, by Kirti Thakran.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2D4F;--tc:#C17C74;--tc-d:#A8635B;--tc-l:#FAF3F1;--tc-m:#E8B5AB;--am:#B5763A;--sg:#6B8F71;--pl:#7D6E8A;--dark:#2c2c2c;--mid:#666;--light:#AAA;--border:#e8ddd9}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Lato',sans-serif;background:#fff;color:var(--dark);min-height:100vh}
+.hdr{background:var(--navy);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Lora',serif;font-size:15px;font-weight:700;color:#fff;text-decoration:none}
+.logo em{color:var(--tc-m);font-style:italic;font-weight:400}
+.hamburger{background:none;border:none;cursor:pointer;padding:4px;display:flex;flex-direction:column;gap:4px;width:28px}
+.hamburger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px}
+.menu-overlay{position:fixed;inset:0;background:rgba(27,45,79,0.4);z-index:199;opacity:0;pointer-events:none;transition:opacity 0.25s}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-panel{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;z-index:200;transition:right 0.3s ease;padding:24px 0;overflow-y:auto}
+.menu-panel.open{right:0}
+.menu-close{background:none;border:none;font-size:20px;color:var(--mid);padding:0 20px 20px;cursor:pointer;display:block}
+.menu-item{display:block;padding:15px 22px;text-decoration:none;color:var(--dark);font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;border-bottom:0.5px solid var(--border)}
+
+.hero{background:var(--navy);padding:32px 20px 30px;text-align:center}
+.eyebrow{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:0.18em;color:var(--tc-m);font-weight:700;margin-bottom:10px}
+.h1{font-family:'Lora',serif;font-size:26px;font-weight:700;color:#fff;line-height:1.3}
+.h1 em{font-style:italic;font-weight:400;color:var(--tc-m)}
+.h-sub{font-size:12px;color:rgba(255,255,255,0.65);margin-top:10px;max-width:300px;margin-left:auto;margin-right:auto}
+
+.section-block{padding:26px 20px 8px}
+.section-eyebrow{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:0.16em;font-weight:700;margin-bottom:6px}
+.section-title{font-family:'Lora',serif;font-size:19px;font-weight:700;color:var(--dark);line-height:1.3}
+.section-sub{font-size:11.5px;color:var(--mid);margin-top:5px;line-height:1.5}
+
+.swipe-wrap{position:relative}
+.swipe-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:16px 20px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.swipe-row::-webkit-scrollbar{display:none}
+.swipe-fade{position:absolute;top:16px;right:0;bottom:8px;width:40px;background:linear-gradient(to right,transparent,#fff 90%);pointer-events:none}
+.block{flex-shrink:0;width:130px;display:flex;flex-direction:column;text-decoration:none;background:#fff;border:0.5px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 3px 14px rgba(27,45,79,0.06);scroll-snap-align:start;transition:transform 0.15s}
+.block:active{transform:scale(0.97)}
+.block-cover{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.block-cover-fallback{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center;font-family:'Lora',serif;font-size:11px;font-weight:700;color:#fff;line-height:1.3}
+.block-body{padding:8px 10px 10px}
+.block-title{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:var(--dark);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:26px}
+.block-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:6px;gap:4px}
+.block-price{font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:700;color:var(--tc-d)}
+.block-btn{font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;color:#fff;background:var(--tc);padding:5px 8px;border-radius:99px;white-space:nowrap}
+
+.empty-note{padding:20px;font-size:11px;color:#aaa;text-align:center}
+
+.footer{background:var(--tc-l);padding:20px;text-align:center;font-family:'Lato',sans-serif;font-size:10px;color:var(--light);line-height:1.7;margin-top:24px}
+.footer strong{color:var(--dark)}
+.loading{text-align:center;padding:30px;font-family:'Poppins',sans-serif;font-size:11px;color:var(--light)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo">Her Money <em>& AI</em></a>
+  <button class="hamburger" onclick="toggleMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+<nav class="menu-panel" id="menuPanel">
+  <button class="menu-close" onclick="toggleMenu(false)">✕</button>
+  <a href="about.html" class="menu-item">About Me</a>
+  <a href="picks.html" class="menu-item">Favourite Picks</a>
+  <a href="guides.html" class="menu-item">Guides</a>
+  <a href="tools.html" class="menu-item">Free Tools</a>
+  <a href="partner-with-me.html" class="menu-item">Partner With Me</a>
+  <a href="information-directory.html" class="menu-item">Information Directory</a>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">📘 MY GUIDES</div>
+  <div class="h1">Everything I've written down, <em>so you don't have to</em></div>
+  <div class="h-sub">Real numbers, step-by-step, no fluff.</div>
+</section>
+
+<div class="section-block">
+  <div class="section-eyebrow" style="color:var(--tc-d)">💎 PAID GUIDES</div>
+  <div class="section-title">Worth every penny — genuinely</div>
+  <div class="section-sub">Built to save you money, time, and a whole lot of stress.</div>
+</div>
+<div class="swipe-wrap"><div class="swipe-row" id="paid-grid"><div class="loading">Loading...</div></div><div class="swipe-fade"></div></div>
+
+<div class="section-block">
+  <div class="section-eyebrow" style="color:var(--sg)">🎁 FREE GUIDES</div>
+  <div class="section-title">No catch, just genuinely useful</div>
+  <div class="section-sub">Start here if you're not ready to buy yet.</div>
+</div>
+<div class="swipe-wrap"><div class="swipe-row" id="free-grid"><div class="loading">Loading...</div></div><div class="swipe-fade"></div></div>
+
+<footer class="footer">
+  <strong>Her Money & AI</strong> · Kirti Thakran · hermoneyandai.ca 🍁
+</footer>
+
+<script>
+function toggleMenu(open){
+  document.getElementById('menuOverlay').classList.toggle('open', open);
+  document.getElementById('menuPanel').classList.toggle('open', open);
+}
+
+const COLORS=['#C17C74','#1B2D4F','#B5763A','#6B8F71','#7D6E8A'];
+
+function renderBlock(g, i, isPaid){
+  const col=g.color||COLORS[i%COLORS.length];
+  const a=document.createElement('a');
+  a.className='block';
+  a.href=g.url||'#';
+  a.target='_blank';
+  a.rel='noopener noreferrer';
+  const coverHTML=g.image_url
+    ?`<img class="block-cover" src="${g.image_url}" alt="${g.title}" onerror="this.outerHTML='<div class=&quot;block-cover-fallback&quot; style=&quot;background:${col}&quot;>${g.title}</div>'">`
+    :`<div class="block-cover-fallback" style="background:${col}">${g.title}</div>`;
+  const priceHTML=isPaid
+    ?`<div class="block-price">$${g.price}</div>`
+    :`<div class="block-price" style="color:var(--sg)">Free</div>`;
+  a.innerHTML=`${coverHTML}
+    <div class="block-body">
+      <div class="block-title">${g.title}</div>
+      <div class="block-bottom">
+        ${priceHTML}
+        <div class="block-btn" style="background:${isPaid?col:'var(--sg)'}">${g.button_text||(isPaid?'Get →':'Download →')}</div>
+      </div>
+    </div>`;
+  return a;
+}
+
+fetch('https://opensheet.elk.sh/1FnnAMlJrma3nKgymYg77t0rI_s5Y0zbFOMZUd0PB9wU/data')
+  .then(r=>{if(!r.ok)throw new Error();return r.json();})
+  .then(all=>{
+    const items=all
+      .map(r=>{const o={};Object.keys(r).forEach(k=>{o[k.toLowerCase()]=r[k];});return o;})
+      .filter(r=>r.page==='guides'&&r.title);
+
+    const paid=items.filter(g=>g.price&&g.price!=='Free');
+    const free=items.filter(g=>!g.price||g.price==='Free');
+
+    const paidGrid=document.getElementById('paid-grid');
+    const freeGrid=document.getElementById('free-grid');
+
+    paidGrid.innerHTML='';
+    if(!paid.length){paidGrid.innerHTML='<div class="empty-note">No paid guides yet.</div>';}
+    else paid.forEach((g,i)=>paidGrid.appendChild(renderBlock(g,i,true)));
+
+    freeGrid.innerHTML='';
+    if(!free.length){freeGrid.innerHTML='<div class="empty-note">No free guides yet.</div>';}
+    else free.forEach((g,i)=>freeGrid.appendChild(renderBlock(g,i,false)));
+  })
+  .catch(()=>{
+    document.getElementById('paid-grid').innerHTML='<div class="empty-note">Couldn\'t load guides right now.</div>';
+    document.getElementById('free-grid').innerHTML='';
+  });
+</script>
+
+</body>
+</html>
