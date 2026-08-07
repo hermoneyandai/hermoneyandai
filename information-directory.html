@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Directory · Her Money & AI</title>
+<meta name="description" content="Canadian mom finance — EI, CCB, RESP, and everything in between. By Kirti Thakran.">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2D4F;--tc:#C17C74;--tc-d:#A8635B;--tc-l:#FAF3F1;--tc-m:#E8B5AB;--pl:#7D6E8A;--am:#B5763A;--sg:#6B8F71;--dark:#2c2c2c;--mid:#666;--light:#AAA;--border:#e8ddd9;--white:#fff}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Lato',sans-serif;background:#fff;color:var(--dark);min-height:100vh}
+.hdr{background:var(--navy);padding:13px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{font-family:'Lora',serif;font-size:15px;font-weight:700;color:#fff;text-decoration:none}
+.logo em{color:var(--tc-m);font-style:italic;font-weight:400}
+.back{font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none}
+.hero{background:var(--navy);padding:12px 20px 34px;text-align:center}
+.eyebrow{font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:0.18em;color:var(--tc-m);font-weight:700;margin-bottom:10px}
+.h1{font-family:'Lora',serif;font-size:28px;font-weight:700;color:#fff;line-height:1.25}
+.h1 em{font-style:italic;font-weight:400;color:var(--tc-m)}
+.h-sub{font-size:12.5px;color:rgba(255,255,255,0.65);margin-top:10px;max-width:320px;margin-left:auto;margin-right:auto}
+.chip-wrap{padding:14px 0;background:#fff;border-bottom:0.5px solid var(--border);position:sticky;top:52px;z-index:99}
+.chip-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 16px}
+.chip-row::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:600;padding:7px 14px;border-radius:99px;border:1px solid var(--border);background:#fff;color:var(--mid);cursor:pointer;white-space:nowrap;transition:all 0.15s}
+.chip.active{color:#fff;background:var(--tc);border-color:var(--tc)}
+.posts{padding:20px 16px 40px}
+.posts-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:14px}
+.post-row{display:flex;gap:16px;text-decoration:none;padding:16px 0;border-bottom:0.5px solid var(--border)}
+.post-row:first-of-type{padding-top:0}
+.post-thumb{width:110px;height:110px;border-radius:12px;object-fit:cover;flex-shrink:0;background:var(--tc-l)}
+.post-info{flex:1;min-width:0;display:flex;flex-direction:column}
+.post-read-time{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--tc-d);font-weight:600;margin-bottom:4px}
+.post-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--dark);line-height:1.35}
+.post-byline{font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--light);margin-top:4px}
+.post-cta{display:inline-block;margin-top:10px;font-family:'Poppins',sans-serif;font-size:9.5px;font-weight:700;color:#fff;background:var(--navy);padding:7px 14px;border-radius:99px;width:fit-content}
+.loading,.empty{text-align:center;padding:40px 20px;font-family:'Poppins',sans-serif;font-size:11px;color:var(--light);line-height:1.8}
+.empty a{color:var(--tc-d);font-weight:600}
+.footer{background:var(--tc-l);padding:20px;text-align:center;font-family:'Lato',sans-serif;font-size:10px;color:var(--light);line-height:1.7}
+.footer strong{color:var(--dark)}
+
+/* Header + Hamburger Menu */
+.hdr-left{display:flex;align-items:center;gap:10px}
+.hamburger{background:none;border:none;cursor:pointer;padding:4px;display:flex;flex-direction:column;gap:4px;width:28px}
+.hamburger span{display:block;height:2px;width:100%;background:#fff;border-radius:2px}
+.menu-overlay{position:fixed;inset:0;background:rgba(27,45,79,0.4);z-index:199;opacity:0;pointer-events:none;transition:opacity 0.25s}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-panel{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#fff;z-index:200;transition:right 0.3s ease;padding:24px 0;overflow-y:auto}
+.menu-panel.open{right:0}
+.menu-close{background:none;border:none;font-size:20px;color:var(--mid);padding:0 20px 20px;cursor:pointer;display:block}
+.menu-item{display:block;padding:15px 22px;text-decoration:none;color:var(--dark);font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;border-bottom:0.5px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo">Her Money <em>& AI</em></a>
+  <button class="hamburger" onclick="toggleMenu(true)" aria-label="Open menu"><span></span><span></span><span></span></button>
+</header>
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu(false)"></div>
+<nav class="menu-panel" id="menuPanel">
+  <button class="menu-close" onclick="toggleMenu(false)">✕</button>
+  <a href="about.html" class="menu-item">About Me</a>
+  <a href="picks.html" class="menu-item">Favourite Picks</a>
+  <a href="guides.html" class="menu-item">Guides</a>
+  <a href="tools.html" class="menu-item">Free Tools</a>
+  <a href="partner-with-me.html" class="menu-item">Partner With Me</a>
+  <a href="information-directory.html" class="menu-item">Information Directory</a>
+</nav>
+
+<script>
+function toggleMenu(open){
+  document.getElementById('menuOverlay').classList.toggle('open', open);
+  document.getElementById('menuPanel').classList.toggle('open', open);
+}
+</script>
+
+
+<section class="hero">
+  <div class="eyebrow">📂 INFORMATION DIRECTORY</div>
+  <div class="h1">Everything from the <em>newsletter</em>, searchable</div>
+  <div class="h-sub">Every email I send goes here too — so you can find it later, not just when it lands in your inbox.</div>
+</section>
+
+<div class="chip-wrap">
+  <div class="chip-row" id="chip-row">
+    <div class="chip active" data-cat="all">All Posts</div>
+    <div class="chip" data-cat="ei">EI & Mat Leave</div>
+    <div class="chip" data-cat="ccb">CCB & Benefits</div>
+    <div class="chip" data-cat="resp">RESP & Savings</div>
+    <div class="chip" data-cat="postpartum">Postpartum Life</div>
+    <div class="chip" data-cat="solids">Starting Solids</div>
+    <div class="chip" data-cat="travel">Travel with Baby</div>
+  </div>
+</div>
+
+<div class="posts" id="posts">
+  <div class="loading">Loading posts...</div>
+</div>
+
+<footer class="footer">
+  <strong>Her Money & AI</strong> · Kirti Thakran · hermoneyandai.ca 🍁<br>
+  New posts pulled automatically from my Beehiiv newsletter.
+</footer>
+
+<script>
+// ============================================================
+// IMPORTANT SETUP STEP:
+// Replace this with your actual Beehiiv publication RSS feed URL.
+// Find it in Beehiiv under Settings → Publication → RSS Feed,
+// or it's typically: https://yourpublication.beehiiv.com/feed
+// ============================================================
+// Beehiiv RSS is fetched via our own Google Apps Script (server-side,
+// no CORS issues, no third-party proxy caching/downtime risk). The script
+// already returns clean JSON, so no XML parsing needed here anymore.
+const BEEHIIV_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw18sC-4Qc0L55SYOwuXMB_-N5ke5XTXg9sQgp7dYuj5jUIbbPO3MzUK2rbXw8o_KMs/exec";
+
+let ALL_POSTS = [];
+let ACTIVE_CAT = 'all';
+
+// Simple keyword-based category tagging, based on words in the title/excerpt.
+// This means you don't have to manually tag anything in Beehiiv —
+// just write naturally and the right chip picks it up.
+const CATEGORY_KEYWORDS = {
+  ei: ['ei ', 'maternity leave', 'parental leave', 'employment insurance'],
+  ccb: ['ccb', 'canada child benefit', 'gst', 'cgeb', 'benefit'],
+  resp: ['resp', 'tfsa', 'rrsp', 'savings', 'invest'],
+  postpartum: ['postpartum', 'delivery', 'birth', 'hospital'],
+  solids: ['solids', 'baby food', 'feeding', 'weaning'],
+  travel: ['travel', 'flight', 'visa', 'passport', 'oci']
+};
+
+function detectCategories(text){
+  const lower = text.toLowerCase();
+  const matches = [];
+  for(const [cat, keywords] of Object.entries(CATEGORY_KEYWORDS)){
+    if(keywords.some(k=>lower.includes(k))) matches.push(cat);
+  }
+  return matches.length ? matches : ['other'];
+}
+
+function stripHtml(html){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  return (tmp.textContent || tmp.innerText || '').trim();
+}
+
+const COVER_COLORS = ['#C17C74','#1B2D4F','#B5763A','#6B8F71','#7D6E8A'];
+
+function renderThumb(post, index){
+  if(post.image){
+    return `<img class="post-thumb" src="${post.image}" alt="${post.title}" onerror="this.style.background='${COVER_COLORS[index % COVER_COLORS.length]}';this.removeAttribute('src')">`;
+  }
+  return `<div class="post-thumb" style="background:${COVER_COLORS[index % COVER_COLORS.length]}"></div>`;
+}
+
+function renderPosts(){
+  const container = document.getElementById('posts');
+  const filtered = ACTIVE_CAT === 'all' ? ALL_POSTS : ALL_POSTS.filter(p => p.categories.includes(ACTIVE_CAT));
+
+  if(!filtered.length){
+    container.innerHTML = `<div class="empty">No posts here yet.<br>Check back soon, or <a href="index.html">explore the rest of the site</a>.</div>`;
+    return;
+  }
+
+  container.innerHTML = '<div class="posts-title">Most Recent</div>';
+
+  filtered.forEach((post,i)=>{
+    const a = document.createElement('a');
+    a.className = 'post-row';
+    a.href = post.link;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.innerHTML = `${renderThumb(post, i)}
+      <div class="post-info">
+        <div class="post-read-time">1 min read</div>
+        <div class="post-title">${post.title}</div>
+        <div class="post-byline">By Kirti Thakran · ${post.date}</div>
+        <div class="post-cta">Read More</div>
+      </div>`;
+    container.appendChild(a);
+  });
+}
+
+document.getElementById('chip-row').addEventListener('click', e=>{
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  ACTIVE_CAT = chip.dataset.cat;
+  renderPosts();
+});
+
+fetch(BEEHIIV_APPS_SCRIPT_URL + "?_cb=" + Date.now())
+  .then(r=>{if(!r.ok) throw new Error(); return r.json();})
+  .then(data=>{
+    const items = data.items || [];
+
+    if(!items.length){
+      document.getElementById('posts').innerHTML = `<div class="empty">No posts published yet.<br>Your first newsletter will show up here automatically.</div>`;
+      return;
+    }
+
+    ALL_POSTS = items.map(item=>{
+      const title = item.title || 'Untitled';
+      const excerptText = stripHtml(item.description || '').slice(0, 140);
+      const combined = title + ' ' + excerptText;
+      const pubDateStr = item.pubDate || '';
+      return {
+        title: title,
+        excerpt: excerptText + (excerptText.length >= 140 ? '…' : ''),
+        link: item.link || '#',
+        image: item.image || '',
+        rawDate: pubDateStr ? new Date(pubDateStr) : new Date(0),
+        date: pubDateStr ? new Date(pubDateStr).toLocaleDateString('en-CA', {year:'numeric',month:'long',day:'numeric'}) : '',
+        categories: detectCategories(combined)
+      };
+    });
+    // Always sort newest-first ourselves — never rely on the feed's own order,
+    // since that guarantees the big featured card is always the latest post.
+    ALL_POSTS.sort((a,b) => b.rawDate - a.rawDate);
+    renderPosts();
+  })
+  .catch(()=>{
+    document.getElementById('posts').innerHTML = `<div class="empty">Couldn't load posts right now.<br><a href="https://hermoneyandai.beehiiv.com" target="_blank">Read the newsletter directly →</a></div>`;
+  });
+</script>
+
+</body>
+</html>
