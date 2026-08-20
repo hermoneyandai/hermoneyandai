@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Travel Recipes | Her Money & AI</title>
+<meta name="description" content="Real recipes I actually packed for our 17-hour flight to India — simple, familiar foods for babies on the move.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#1B2D4F;
+    --terracotta:#C17C74;
+    --cream:#FAF3F1;
+    --cream-deep:#F1E4DF;
+    --ink:#2A2420;
+    --line: rgba(27,45,79,0.12);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:'Poppins',sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',serif;color:var(--navy);margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:800px;margin:0 auto;padding:0 24px;}
+
+  .hero{background:var(--navy);color:var(--cream);padding:72px 0 56px;position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;right:-100px;top:-100px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(193,124,116,0.35), transparent 70%);}
+  .hero .wrap{position:relative;z-index:1;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);font-weight:600;margin-bottom:20px;}
+  .eyebrow::before{content:"🍁";font-size:14px;}
+  h1{font-size:clamp(28px,4.5vw,42px);line-height:1.18;font-weight:700;max-width:16ch;}
+  .hero p.lede{margin-top:18px;max-width:52ch;font-size:16.5px;color:rgba(250,243,241,0.82);font-weight:300;}
+
+  .recipes{padding:56px 0 90px;}
+  .section-label{
+    font-family:'Lora',serif;font-style:italic;font-weight:500;
+    font-size:15px;color:var(--terracotta);margin-bottom:24px;
+    padding-bottom:10px;border-bottom:1px solid var(--line);
+  }
+
+  .recipe-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:30px 28px;margin-bottom:24px;
+  }
+  .recipe-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px;}
+  .recipe-title{font-family:'Lora',serif;font-weight:600;font-size:21px;color:var(--navy);}
+  .tag{
+    font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;
+    padding:4px 10px;border-radius:20px;background:var(--terracotta);color:#fff;white-space:nowrap;
+  }
+  .recipe-note{font-size:14px;color:var(--navy);opacity:0.65;margin-bottom:22px;max-width:56ch;}
+
+  .recipe-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:28px;}
+  @media (max-width:620px){.recipe-grid{grid-template-columns:1fr;}}
+
+  .block-label{
+    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;
+    color:var(--terracotta);margin-bottom:12px;
+  }
+  ul.ingredients{list-style:none;padding:0;margin:0;}
+  ul.ingredients li{
+    padding:9px 0;border-bottom:1px dashed var(--line);
+    font-size:14.5px;color:var(--ink);
+  }
+  ul.ingredients li:last-child{border-bottom:none;}
+
+  ol.steps{padding-left:20px;margin:0;}
+  ol.steps li{margin-bottom:12px;font-size:14.5px;color:var(--ink);padding-left:4px;}
+
+  .travel-tip{
+    margin-top:20px;background:var(--cream-deep);border-radius:12px;
+    padding:14px 18px;font-size:13.5px;color:var(--navy);
+  }
+  .travel-tip strong{color:var(--terracotta);}
+
+  .locked-card{
+    background:var(--cream-deep);border:1px dashed var(--line);border-radius:16px;
+    padding:24px 28px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .locked-title{font-family:'Lora',serif;font-weight:600;font-size:16.5px;color:var(--navy);opacity:0.6;}
+  .tag.soon{background:transparent;border:1px solid rgba(27,45,79,0.3);color:var(--navy);opacity:0.65;}
+
+  .follow-cta{
+    background:var(--navy);border-radius:16px;padding:32px 30px;text-align:center;color:var(--cream);margin-top:44px;
+  }
+  .follow-cta .serif{color:var(--cream);font-size:20px;margin-bottom:8px;}
+  .follow-cta p{color:rgba(250,243,241,0.75);font-size:14px;max-width:44ch;margin:0 auto 18px;}
+  .btn{display:inline-block;background:var(--terracotta);color:#fff;text-decoration:none;padding:11px 26px;border-radius:30px;font-weight:600;font-size:14px;}
+
+  footer{text-align:center;padding:28px 0 46px;font-size:12.5px;color:var(--navy);opacity:0.45;}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Comment RECIPE on Instagram for this</span>
+    <h1>Baby Travel Recipes</h1>
+    <p class="lede">Real food I actually packed for our 17-hour flight to India — simple, familiar, and easy to carry. New recipes added as I share them.</p>
+  </div>
+</section>
+
+<section class="recipes">
+  <div class="wrap">
+
+    <div class="section-label">Live Recipes</div>
+
+    <div class="recipe-card">
+      <div class="recipe-head">
+        <div class="recipe-title">Fermented Ragi Idli (Flight-Ready)</div>
+        <span class="tag">Live</span>
+      </div>
+      <p class="recipe-note">What I made instead of the airline's infant meal — soft, familiar, and easy for baby to eat with her hands mid-flight.</p>
+
+      <div class="recipe-grid">
+        <div>
+          <div class="block-label">Ingredients</div>
+          <ul class="ingredients">
+            <li>2 spoons fermented ragi powder</li>
+            <li>2 spoons sooji (semolina)</li>
+            <li>2 spoons poha, soaked 5 minutes and ground</li>
+            <li>1 spoon any baby masala</li>
+            <li>2 spoons curd (plus 2 more later)</li>
+            <li>Water, as needed for consistency</li>
+            <li>Ghee, for coating the idli maker</li>
+          </ul>
+        </div>
+        <div>
+          <div class="block-label">Method</div>
+          <ol class="steps">
+            <li>Mix the ragi powder, sooji, ground poha, baby masala, and 2 spoons curd well.</li>
+            <li>Let the batter rest for 10 minutes.</li>
+            <li>Add 2 more spoons of curd and enough water to reach a smooth, pourable consistency.</li>
+            <li>Coat the idli maker with ghee.</li>
+            <li>Add the batter into the moulds.</li>
+            <li>Steam for 15 minutes.</li>
+            <li>Let rest for 2–3 minutes before removing.</li>
+            <li>Take the idlis out.</li>
+          </ol>
+          <div class="travel-tip"><strong>Travel tip:</strong> pack in silver foil, then into a zip lock bag — keeps things light and mess-free for a flight bag.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:44px;">Coming Soon</div>
+
+    <div class="locked-card">
+      <div class="locked-title">Travel Khichdi — Cooked & Packed for a Long-Haul Flight</div>
+      <span class="tag soon">Coming Soon</span>
+    </div>
+
+    <div class="follow-cta">
+      <div class="serif">Want the next recipe as soon as it's up?</div>
+      <p>Comment <strong>RECIPE</strong> on any of my food reels and I'll send you what's live here.</p>
+      <a class="btn" href="https://www.instagram.com/hermoneyandai" target="_blank" rel="noopener">Follow @hermoneyandai</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  hermoneyandai.ca — real food, real flights, zero fluff. 🍁
+</footer>
+
+</body>
+</html>
